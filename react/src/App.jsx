@@ -1,5 +1,5 @@
-import { Home } from './pages/Home';
-import {Notizie} from './pages/Notizie';
+import { Home } from './pages/Home/Home';
+import {Notizie} from './pages/Notizie/Notizie';
 import { Layout } from './Layout';
 
 import {  BrowserRouter as Router, Routes, Route } from "react-router-dom";

@@ -12,6 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.Title {
+
+  position: absolute;
+  margin-top: -200px; /* Un valore leggermente più grande dell’altezza navbar */
+  text-align: center;
+}
 
 a {
   font-weight: 500;
