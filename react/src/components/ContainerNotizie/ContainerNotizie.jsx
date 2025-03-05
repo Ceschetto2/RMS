@@ -1,6 +1,6 @@
 import "./ContainerNotizie.css"
 
-export function ContainerNotizie(props)
+export function ContainerNotizie({props})
 {
     return(
         <div className="container-notizia">
