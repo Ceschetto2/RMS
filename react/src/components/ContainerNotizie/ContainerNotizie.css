@@ -1,19 +1,42 @@
+/* Container principale */
 .container-notizia {
-    position:relative;
-    top: 0;
-    align-self: center;
+    display: flex;           /* Attiva Flexbox */
+    align-items: flex-start; /* Allinea gli elementi (immagine e testo) in alto */
+    gap: 16px;               /* Spaziatura orizzontale tra immagine e blocco di testo */
+    margin: 20px;            /* Margine di esempio */
     width: 1200px;;
     height: 301px;
     background: #d9d9d9;
     border-radius: 10px;
     overflow: hidden; /* overflow serve per nascondere le cose che superano i confini*/
   }
-  .immagine-notizia{
-    position: absolute;
+  
+  /* Stile per l’immagine */
+  .immagine-notizia {
     height: 100%;
+    width: auto;
     left:0%;
   }
-  .titolo-notizia{
-    position: absolute;
+  
+  /* Contenitore del testo (titolo + descrizione) */
+  .text-box {
+    flex: 1;
+    display: flex;           /* Anche qui, flexbox */
+    flex-direction: column;  /* Gli elementi si dispongono in colonna (uno sopra l’altro) */
+    justify-content: center;
 
+  }
+  
+  /* Titolo della notizia */
+  .titolo-notizia {
+    font-size: 1.2rem;       /* Dimensione di esempio */
+    font-weight: bold;       /* Grassetto di esempio */
+    margin-bottom: 8px;      /* Un po’ di spazio sotto al titolo */
+    align-content: center;
+  }
+  
+  /* Descrizione della notizia */
+  .descrizione-notizia {
+    font-size: 1rem;         /* Dimensione di esempio */
+    color: #555;             /* Colore di esempio */
   }

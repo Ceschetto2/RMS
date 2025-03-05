@@ -5,6 +5,7 @@
     align-items: center;
     width: 100%;
     background-color: blue;
+    z-index: 10; /* Posizione della navbar in profondita sullo schermo*/
 }
 .nav-link-list{
     display: flex; 
