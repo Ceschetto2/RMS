@@ -6,7 +6,7 @@
     margin: 20px;            /* Margine di esempio */
     width: 1200px;;
     height: 301px;
-    background: #d9d9d9;
+    background: #353535;
     border-radius: 10px;
     overflow: hidden; /* overflow serve per nascondere le cose che superano i confini*/
   }

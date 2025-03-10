@@ -5,20 +5,12 @@
     align-items: center;       /* Centra orizzontalmente se vuoi (in alternativa: flex-start) */
     margin: 10px;              
     padding: 0;                /* Facoltativo, rimuove padding di default */
-    background-color:cornflowerblue;
+    background-color:#0B0B22;
   }
   
   /* Titolo in alto */
   .titolo {
-    /* Stili che preferisci per l'h1, ad esempio: */
-    margin-top: 20px; 
-    font-size: 2rem;
-  }
-  
-  /* Se vuoi dare uno stile particolare al Container */
-  .Container {
-    /* Ad esempio: */
-    width: 80%;      
-    margin-top: 10px; 
+    height: 100px;
+
   }
   
