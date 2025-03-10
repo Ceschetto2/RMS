@@ -4,13 +4,19 @@
     left: 0;
     align-items: center;
     width: 100%;
-    background-color: blue;
+    background: rgba(18,17,16,0.7);
     z-index: 10; /* Posizione della navbar in profondita sullo schermo*/
 }
 .nav-link-list{
     display: flex; 
+    justify-content: center;
+
+
     gap: 1rem;
 
+}  
+.nav-image{
+    height: 38px;
 }
 .nav-link{
 
