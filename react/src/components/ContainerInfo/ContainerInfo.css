@@ -1,5 +1,5 @@
 /* Container principale */
-.container-notizia {
+.container-info {
     display: flex;           /* Attiva Flexbox */
     align-items: flex-start; /* Allinea gli elementi (immagine e testo) in alto */
     gap: 16px;               /* Spaziatura orizzontale tra immagine e blocco di testo */
@@ -12,7 +12,7 @@
   }
   
   /* Stile per l’immagine */
-  .immagine-notizia {
+  .immagine-info {
     height: 100%;
     width: auto;
     left:0%;
@@ -28,7 +28,7 @@
   }
   
   /* Titolo della notizia */
-  .titolo-notizia {
+  .titolo-info {
     font-size: 1.2rem;       /* Dimensione di esempio */
     font-weight: bold;       /* Grassetto di esempio */
     margin-bottom: 8px;      /* Un po’ di spazio sotto al titolo */
@@ -36,7 +36,7 @@
   }
   
   /* Descrizione della notizia */
-  .descrizione-notizia {
+  .descrizione-info {
     font-size: 1rem;         /* Dimensione di esempio */
     color: #555;             /* Colore di esempio */
   }
