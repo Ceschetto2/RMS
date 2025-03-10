@@ -4,7 +4,7 @@ import "./Notizie.css";
 export function Notizie() {
   let lista_notizie = [
     {
-      titolo: "titolo 1",
+      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
       descrizione: "descrizione 1",
       dataPubblicazione: "1/1/1/1",
       oggetto: "Oggetto 1",

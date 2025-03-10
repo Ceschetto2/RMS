@@ -1,42 +1,60 @@
 /* Container principale */
 .container-info {
-    display: flex;           /* Attiva Flexbox */
-    align-items: flex-start; /* Allinea gli elementi (immagine e testo) in alto */
-    gap: 16px;               /* Spaziatura orizzontale tra immagine e blocco di testo */
-    margin: 20px;            /* Margine di esempio */
-    width: 1200px;;
-    height: 301px;
-    background: #353535;
-    border-radius: 10px;
-    overflow: hidden; /* overflow serve per nascondere le cose che superano i confini*/
-  }
-  
-  /* Stile per l’immagine */
-  .immagine-info {
-    height: 100%;
-    width: auto;
-    left:0%;
-  }
-  
-  /* Contenitore del testo (titolo + descrizione) */
-  .text-box {
-    flex: 1;
-    display: flex;           /* Anche qui, flexbox */
-    flex-direction: column;  /* Gli elementi si dispongono in colonna (uno sopra l’altro) */
-    justify-content: center;
+  display: flex; /* Attiva Flexbox */
+  align-items: flex-start; /* Allinea gli elementi (immagine e testo) in alto */
+  gap: 16px; /* Spaziatura orizzontale tra immagine e blocco di testo */
+  margin: 20px; /* Margine di esempio */
+  width: 1200px;
+  height: 301px;
+  background: #353535;
+  border-radius: 10px;
+  overflow: hidden; /* overflow serve per nascondere le cose che superano i confini*/
+}
 
-  }
+/* Stile per l’immagine */
+.immagine-info {
+  height: 100%;
+  width: auto;
+  left: 0%;
+}
+
+
+
+
+.text-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.header-info-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* distribuisce elementi ai lati opposti */
+  margin-bottom: 8px;
+}
+
+/* Titolo della notizia */
+.titolo-info {
   
-  /* Titolo della notizia */
-  .titolo-info {
-    font-size: 1.2rem;       /* Dimensione di esempio */
-    font-weight: bold;       /* Grassetto di esempio */
-    margin-bottom: 8px;      /* Un po’ di spazio sotto al titolo */
-    align-content: center;
-  }
-  
-  /* Descrizione della notizia */
-  .descrizione-info {
-    font-size: 1rem;         /* Dimensione di esempio */
-    color: #555;             /* Colore di esempio */
-  }
+  font-size: 1.5rem;
+  font-weight: bold;
+
+}
+.data-pubblicazione-info{
+  margin: auto 16px;
+
+}
+.oggetto-info{
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+/* Descrizione della notizia */
+.descrizione-info {
+  margin: 0% 0%;  
+  font-size: 1rem; /* Dimensione di esempio */
+  text-align: left;
+}

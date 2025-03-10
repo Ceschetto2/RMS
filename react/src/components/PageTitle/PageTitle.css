@@ -1,12 +1,14 @@
 .container-page-title {
   margin: 10px auto;
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 
 }
 .titolo {
+  text-decoration: underline;
   text-align: center;
   font-family: Abel;
   font-size: 64px;
