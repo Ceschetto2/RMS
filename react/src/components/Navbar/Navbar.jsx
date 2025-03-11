@@ -4,10 +4,11 @@ import "./Navbar.css";
 export function Navbar() {
   return (
     <div className="navbar">
+      <Link className="nav-link-image" to="/">
+      <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home"></img>
+      </Link>
       <div className="nav-link-list">
-        <Link className="nav-link-image" to="/">
-          <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home"></img>
-        </Link>
+
    
         <Link className="nav-link" to="/gallery">
           <button className="nav-button">Gallery</button>
@@ -27,8 +28,12 @@ export function Navbar() {
         <Link className="nav-link" to="/FAQ">
           <button className="nav-button">FAQ</button>
         </Link>
+
         
       </div>
+      <Link className="nav-link" to="/FAQ">
+      <button className="nav-button">Login</button>
+      </Link>
     </div>
   );
 }
