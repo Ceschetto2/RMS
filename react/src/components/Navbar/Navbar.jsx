@@ -5,8 +5,11 @@ export function Navbar() {
   return (
     <div className="navbar">
       <Link className="nav-link-image" to="/">
-      <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home"></img>
-      </Link>
+
+        <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home"></img>
+        </Link>
+  
+  
       <div className="nav-link-list">
 
    
@@ -31,7 +34,7 @@ export function Navbar() {
 
         
       </div>
-      <Link className="nav-link" to="/FAQ">
+      <Link className="nav-link-login" to="/FAQ">
       <button className="nav-button">Login</button>
       </Link>
     </div>

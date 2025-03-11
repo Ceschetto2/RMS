@@ -14,7 +14,11 @@
 .nav-image{
     height: 38px;
 }
-
+.nav-image:hover{
+    color: #58bfff; /* Colore più luminoso al passaggio del mouse */
+  /* Effetto glow (bagliore) */
+    height: 38px;
+}
 
 .nav-link-list{
     display: flex; 
