@@ -8,23 +8,22 @@
     width: 100%;
     background: rgba(18,17,16,0.7);
     z-index: 10; /* Posizione della navbar in profondita sullo schermo*/
+    overflow:hidden;
 }
 
 
 .nav-image{
     height: 38px;
 
-    transition: box-shadow 0.4s ease;
+    transition: filter 0.4s ease;
     border-radius: 8px; /* opzionale per bordi più morbidi */
 }
-.nav-image:hover{
-    height: 38px;
-}
-.nav-link-image:hover .nav-image {
-    box-shadow: 
-      0 0 15px rgba(52, 152, 219, 0.6),
-      0 0 30px rgba(52, 152, 219, 0.4),
-      0 0 45px rgba(52, 152, 219, 0.2);
+
+.nav-image:hover {
+    filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.8))
+            drop-shadow(0 0 20px rgba(52, 152, 219, 0.6))
+            drop-shadow(0 0 30px rgba(52, 152, 219, 0.4));
+
   }
 
 .nav-link-list{
@@ -55,9 +54,3 @@
 }
 
   
-  .nav-link-image:hover .nav-image {
-    box-shadow: 
-      0 0 15px rgba(52, 152, 219, 0.6),
-      0 0 30px rgba(52, 152, 219, 0.4),
-      0 0 45px rgba(52, 152, 219, 0.2);
-  }

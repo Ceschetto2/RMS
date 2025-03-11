@@ -4,9 +4,10 @@ import "./Navbar.css";
 export function Navbar() {
   return (
     <div className="navbar">
-      <Link className="nav-link-image" to="/">
+        <Link className="nav-link-image" to="/"> 
+        <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home">
 
-        <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home"></img>
+        </img>
         </Link>
   
   
