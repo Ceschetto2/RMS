@@ -13,12 +13,19 @@
 
 .nav-image{
     height: 38px;
+
+    transition: box-shadow 0.4s ease;
+    border-radius: 8px; /* opzionale per bordi più morbidi */
 }
 .nav-image:hover{
-    color: #58bfff; /* Colore più luminoso al passaggio del mouse */
-  /* Effetto glow (bagliore) */
     height: 38px;
 }
+.nav-link-image:hover .nav-image {
+    box-shadow: 
+      0 0 15px rgba(52, 152, 219, 0.6),
+      0 0 30px rgba(52, 152, 219, 0.4),
+      0 0 45px rgba(52, 152, 219, 0.2);
+  }
 
 .nav-link-list{
     display: flex; 
@@ -46,3 +53,11 @@
     font-size: 1rem;
     /* Personalizza colori, bordi, hover e altro come desideri */
 }
+
+  
+  .nav-link-image:hover .nav-image {
+    box-shadow: 
+      0 0 15px rgba(52, 152, 219, 0.6),
+      0 0 30px rgba(52, 152, 219, 0.4),
+      0 0 45px rgba(52, 152, 219, 0.2);
+  }
