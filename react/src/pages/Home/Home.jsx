@@ -1,3 +1,4 @@
+import { Downbar } from "../../components/DownBar/Downbar";
 import "./Home.css"
 export function Home(){
     return(

@@ -4,7 +4,7 @@
   align-items: flex-start; /* Allinea gli elementi (immagine e testo) in alto */
   gap: 16px; /* Spaziatura orizzontale tra immagine e blocco di testo */
   margin: 20px; /* Margine di esempio */
-  width: 1200px;
+  width:95%;
   height: 301px;
   background: #353535;
   border-radius: 10px;
