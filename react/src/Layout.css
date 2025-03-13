@@ -1,6 +1,6 @@
 .background-pages {
     display:flex;
-    flex-direction: row;
+    flex-direction:column;
     flex:1;
     top:0px;
     left: 0px;
