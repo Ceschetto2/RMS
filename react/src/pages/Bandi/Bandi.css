@@ -1,12 +1,13 @@
 .bandi {
     display: flex;             /* Abilita il layout flex */
     flex-direction: column;    /* Dispone gli elementi verticalmente */
-    justify-content: flex-start; /* Allinea in alto (è anche il default) */
-    align-items: center;       /* Centra orizzontalmente se vuoi (in alternativa: flex-start) */
-    margin: 10px;              
+    justify-content: center; /* Center vertically */
+    align-items: center;       /* Center horizontally */
+    margin: auto;              /* Center the container itself */
     padding: 0;                /* Facoltativo, rimuove padding di default */
     background-color:#0B0B22;
     width: 1200px;
+    min-height: calc(100vh - 20px); /* Account for margin */
   }
   
   /* Titolo in alto */
