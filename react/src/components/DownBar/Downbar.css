@@ -1,8 +1,7 @@
 .downbar {
-    left:0%;
-    width: 100%;
-    height: 100px;
-  position:absolute;
-    background-color: black;
-
+  left: 0%;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  background-color: black;
 }
