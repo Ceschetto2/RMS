@@ -7,7 +7,9 @@ export function Layout() {
   return (
     <div className="container-pages">
       <Navbar />
-
+      <div className="navbar-spacing">
+        
+      </div>
      
       <Outlet />
    
