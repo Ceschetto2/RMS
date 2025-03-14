@@ -7,7 +7,6 @@
     padding: 0;                /* Facoltativo, rimuove padding di default */
     background-color:#0B0B22;
     width: 1200px;
-    min-height: calc(100vh - 20px); /* Account for margin */
   }
   
   /* Titolo in alto */

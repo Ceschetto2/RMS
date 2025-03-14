@@ -1,12 +1,12 @@
-.background-pages {
+.container-pages {
     display:flex;
     flex-direction:column;
-    flex:1;
     top:0px;
     left: 0px;
     width: 100%;
     min-height: 100vh; /* Usa min-height per assicurarti che copra l'intera altezza della viewport */
     background: #022F47;
     position: absolute;
-    justify-content: center;
+
+    align-items: center;
 }

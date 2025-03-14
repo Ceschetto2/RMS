@@ -5,12 +5,12 @@ import "./Layout.css"
 
 export function Layout() {
   return (
-    <div className="background-pages">
+    <div className="container-pages">
       <Navbar />
 
-      <main>
-        <Outlet />
-      </main>
+     
+      <Outlet />
+   
 
       <Footer/>
     </div>
