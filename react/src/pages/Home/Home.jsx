@@ -1,4 +1,4 @@
-import { Downbar } from "../../components/DownBar/Downbar";
+import { Footer } from "../../components/Footer/Footer";
 import "./Home.css"
 export function Home(){
     return(
