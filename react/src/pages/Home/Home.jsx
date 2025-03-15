@@ -1,4 +1,3 @@
-import { Footer } from "../../components/Footer/Footer";
 import "./Home.css"
 export function Home(){
     return(
