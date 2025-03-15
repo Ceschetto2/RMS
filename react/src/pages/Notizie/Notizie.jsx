@@ -23,6 +23,38 @@ export function Notizie() {
         "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
       descrizione: "descrizione 3",
     },
+    {
+      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
+      img_url:
+        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
+      descrizione: "descrizione 1",
+      dataPubblicazione: "1/1/1/1",
+      oggetto: "Oggetto 1",
+    },
+    {
+      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
+      img_url:
+        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
+      descrizione: "descrizione 1",
+      dataPubblicazione: "1/1/1/1",
+      oggetto: "Oggetto 1",
+    },
+    {
+      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
+      img_url:
+        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
+      descrizione: "descrizione 1",
+      dataPubblicazione: "1/1/1/1",
+      oggetto: "Oggetto 1",
+    },
+    {
+      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
+      img_url:
+        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
+      descrizione: "descrizione 1",
+      dataPubblicazione: "1/1/1/1",
+      oggetto: "Oggetto 1",
+    },
   ];
   let titolo_info = {
     titolo: "Notizie",
