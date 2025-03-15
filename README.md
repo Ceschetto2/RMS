@@ -23,7 +23,6 @@ Di default il programma si avviera sulla porta 5173 in localhost: http://localho
 
 
 ## Lista di cose da implementare:
-- navbar
-- pagina notizie 
 - pagina galleria
-- pagina bandi
+- pagina home
+- pagina Faq
