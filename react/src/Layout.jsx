@@ -1,33 +1,12 @@
 import { Footer} from "./components/Footer/Footer";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import listaDev from "./Data/lista_sviluppatri.json"
 import "./Layout.css"
 
 export function Layout() {
 
-  let listaDev = [
-    {
-      devName: "Claudia A. Cappelluti",
-      devImgLink:
-        "https://i.postimg.cc/C5tWBVYv/Screenshot-2025-03-14-114412.png",
-      devSocialLink:
-        "https://www.linkedin.com/in/claudia-antonia-cappelluti-39885824b/",
-    },
   
-    {
-      devName: "Gabriele DeCarolis",
-      devImgLink:
-        "https://i.postimg.cc/q7RXY623/744-A5626-2-A71-46-D7-A2-D3-97-C1-F866-ADA0.png",
-      devSocialLink: "https://www.linkedin.com/in/claudia-cappelluti-125bb2215/",
-    },
-    {
-      devName: "Francesco Bocci",
-      devImgLink:
-        "https://i.postimg.cc/8PNv9rSz/CCE0752-D-7-AB7-4-E16-A60-F-1-D623-D933-A6-C.png",
-      devSocialLink: "https://www.linkedin.com/in/francesco-bocci-37741925b/",
-    },
-  ];
-
 
 
   return (
