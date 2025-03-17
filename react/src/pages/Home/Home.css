@@ -1,3 +1,9 @@
-.Home{
-    display: flex;
+.home{
+    display:flex
+}
+
+.contenitore{
+    height: 200px;
+    width: 100px;
+    background-color: blanchedalmond;
 }
