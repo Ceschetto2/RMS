@@ -5,10 +5,11 @@ import './index.css'
 //import 'bootstrap/dist/css/bootstrap.css';
 
 /*
+Il file main rappresenta il file dal quale viene eseguito il progetto. 
 
 */
 
-export default App
+
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
