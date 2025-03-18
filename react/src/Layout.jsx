@@ -12,7 +12,6 @@ export function Layout() {
   const [popupState, setPopupState] = useState(false)
   function handlePopupClick(){
     setPopupState(!popupState)
-    {console.log(popupState)}
   }
   
 
@@ -24,7 +23,7 @@ export function Layout() {
         
       </div>
 
-      {popupState? <LoginPopup/>: null}
+      {popupState? <LoginPopup handlePopupClick= {handlePopupClick}/>: null}
       <Outlet />
    
 
