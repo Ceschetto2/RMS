@@ -1,0 +1,8 @@
+.popup-background{
+    position: fixed;
+    width: 100vh;
+    height: 100vh;
+    background-color: rgba(87, 87, 87, 0.5);
+    display: flex;
+    z-index: 11;
+}
