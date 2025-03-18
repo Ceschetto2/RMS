@@ -1,4 +1,35 @@
 .search-container{
+    display: flex;
     margin:auto 10px;
+    align-items: center;
+ 
     
+}
+.label{
+    margin-right: 6px;
+
+}
+.search-bar{
+    margin:auto 6px;
+    border-radius: 2px;
+
+}
+
+.search-button{
+    height: 24px;
+    width: 24px;
+    background-color:aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-icon{
+
+    width: inherit; /* Cambia la larghezza */
+    height: auto; /* Mantiene le proporzioni */
+}
+
+.search-bar{
+    height: inherit;
+    width: auto;
 }

@@ -1,10 +1,16 @@
-import "./SearchBar.css"
+import "./SearchBar.css";
 
-export function SearchBar({ props }) {
+export function SearchBar() {
   return (
     <div className="search-container">
-      <text className="search-bar">search bar placeholder</text>
-      <button className="search-button">place h.</button>
+      <label className="label">Search:</label>
+      <input className="search-bar" name="search-query" />
+      <button className="search-button">
+        <img
+          className="search-icon"
+          src="https://i.postimg.cc/DZmHVpK3/search.png"
+        ></img>
+      </button>
     </div>
   );
 }
