@@ -15,6 +15,7 @@
 
 .testo-domanda{
     margin: 12px;
+    width: inherit;
     font-size: 16px;
     text-align: left; /* Allinea il testo a sinistra */
 }

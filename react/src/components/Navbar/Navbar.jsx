@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 
 import "./Navbar.css";
-export function Navbar() {
+import { LoginPopup } from "../LoginPopup/LoginPopup";
+
+export function Navbar({handlePopupClick}) {
+
   return (
     <div className="navbar">
         <Link className="nav-link-image" to="/"> 
@@ -35,9 +40,9 @@ export function Navbar() {
 
         
       </div>
-      <Link className="nav-link-login" to="/FAQ">
-      <button className="nav-button">Login</button>
-      </Link>
+
+      <button className="nav-button" onClick={handlePopupClick}>Login</button>
+ 
     </div>
   );
 }

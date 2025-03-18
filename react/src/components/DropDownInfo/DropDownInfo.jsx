@@ -11,9 +11,8 @@ export function DropDownInfo({ props }) {
       <text className="testo-domanda">{props.text}</text>
 
       {clicked ? <></> : <div className="question-container expanded">
-        
-        
-        <ul>
+
+        <ul className="testo-domanda">
             <li>
                 se nel mondo esistesse un po di bene
             </li>
@@ -22,8 +21,7 @@ export function DropDownInfo({ props }) {
             </li>
 
         </ul>
-        se nel
-        
+   
         
         </div>}
     </div>
