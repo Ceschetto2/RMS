@@ -1,0 +1,22 @@
+.img-slide-show{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 16px;
+}
+.img{
+    z-index: 2;
+    filter:drop-shadow(0 0  20px  black);
+    border-radius: 16px;
+}
+.l-img{
+    position: relative;
+    left: 50px;
+    filter:blur(10px)
+
+}
+.r-img{
+    position: relative;
+    right: 50px;
+    filter:blur(10px);
+}
