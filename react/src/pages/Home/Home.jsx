@@ -9,7 +9,7 @@ export function Home(){
     return(
         
         <>
-      
+          <ImgSlideShow img_array={img_array}/>
         </>
     );
 }
