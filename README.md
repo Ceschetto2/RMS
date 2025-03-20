@@ -23,6 +23,10 @@ Di default il programma si avviera sulla porta 5173 in localhost: http://localho
 
 
 ## Lista di cose da implementare:
-- pagina galleria
-- pagina home
-- pagina Faq
+- pagina GALLERY:  
+Da Modificare i componenti carosello per garantire il download delle immagini. Inoltre nella modalità gallery va introdotta un paging system se le immagini sono troppe da visualizzare.
+
+- pagina HOME
+
+- iniziare il BackEnd
+
