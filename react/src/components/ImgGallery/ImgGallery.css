@@ -3,6 +3,7 @@
     height: 70vh;
     border: 2px;
     border-color: black;
+    min-height: 400px;
 }
 .img-gallery{
 

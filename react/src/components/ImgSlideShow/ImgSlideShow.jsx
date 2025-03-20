@@ -1,24 +1,18 @@
-import "./ImgSlideShow.css"
+import "./ImgSlideShow.css";
 import { useState } from "react";
 
 export function ImgSlideShow({ img_array }) {
   const [currentImgIndex, setImageIndex] = useState(0);
+  const [fullScreenStatus, setFullScreenStatus] = useState(false);
 
-
-  function getPrvIndex(){
+  function getPrvIndex() {
     if (img_array.length !== 0)
-       return currentImgIndex === 0 ? img_array.length - 1 : currentImgIndex - 1
-  
+      return currentImgIndex === 0 ? img_array.length - 1 : currentImgIndex - 1;
   }
-  function getNextIndex(){
+  function getNextIndex() {
     if (img_array.length !== 0)
-        return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1
-
-    }
-
-
-
-  
+      return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;
+  }
 
   return (
     <div className="img-slide-show">
@@ -26,11 +20,30 @@ export function ImgSlideShow({ img_array }) {
         prv
       </button>
       <img className="l-img" src={img_array[getPrvIndex()]}></img>
-      <img className="img" src={img_array[currentImgIndex]} alt="errore"></img>
+
+      <button onClick={() => setFullScreenStatus(!fullScreenStatus)}>
+        {fullScreenStatus ? (
+          renderFullScreenImage()
+        ) : (
+          <img className="img" src={img_array[currentImgIndex]} alt="errore" />
+        )}
+      </button>
+
       <img className="r-img" src={img_array[getNextIndex()]}></img>
-      <button className="next-img" onClick={()=>(setImageIndex(getNextIndex()))}>
+
+      <button
+        className="next-img"
+        onClick={() => setImageIndex(getNextIndex())}
+      >
         next
       </button>
     </div>
   );
+  function renderFullScreenImage() {
+    return (
+      <div className="test">
+        <img className="full-img" src={img_array[currentImgIndex]}/>
+      </div>
+    );
+  }
 }

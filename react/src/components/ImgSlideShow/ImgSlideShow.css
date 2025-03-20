@@ -2,7 +2,10 @@
     display:flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin: 16px;
+    min-height: 400px;
+    
 }
 .img{
     z-index: 2;
@@ -19,4 +22,35 @@
     position: relative;
     right: 50px;
     filter:blur(10px);
+}
+.prv-img{
+    position: relative;
+    left: 400px;
+    z-index: 2;
+}
+.next-img{
+    position: relative;
+    right: 400px;
+    z-index: 2;
+}
+.full-img
+{
+    width: auto;
+    height: 75%;
+}
+.test{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Sfondo scuro trasparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
