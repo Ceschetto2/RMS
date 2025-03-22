@@ -1,5 +1,7 @@
+
+
 module.exports = (sequelize, DataTypes) => {
-    const Gallery_Images = sequelize.define("Gallery_Image", {
+    const GalleryImage = sequelize.define("GalleryImage", {
         img_link: {
             type:DataTypes.STRING,
             allowNull:false,
@@ -17,5 +19,5 @@ module.exports = (sequelize, DataTypes) => {
 
         },
     })
-    return Gallery_Images;
+    return GalleryImage;
 };

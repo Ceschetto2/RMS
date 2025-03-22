@@ -1,4 +1,6 @@
 const express = require("express");
+
+
 const app = express();
 
 
@@ -10,6 +12,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const db = require("../models");
+
+const galleryImageRouter = require("../routes/GalleryImages_routes");
+app.use("/GalleryImages", galleryImageRouter);
+
+
 
 db.sequelize.sync().then(() => {
   app.listen(8080, () => {
