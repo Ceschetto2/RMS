@@ -6,11 +6,14 @@ const { GalleryImage, sequelize } = require("../models");
 
 router.get("/", async (req, res) => {
   //const listOfImages = await GalleryImage.findAll();
+  if (req.body === null){
 
-  const [listOfImages] = await sequelize.query("SELECT *.* FROM GalleryImages WHERE id ="+2, {
+    
+  }
+  const listOfImages = await sequelize.query('SELECT DISTINCT * FROM GalleryImages' , {
     type: sequelize.QueryTypes.SELECT
   });
-  console.log(listOfImages)
+  console.log(listOfImages.length)
   res.json(listOfImages);
 });
 
