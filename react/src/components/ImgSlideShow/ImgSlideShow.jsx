@@ -19,17 +19,17 @@ export function ImgSlideShow({ img_array }) {
       <button className="prv-img" onClick={() => setImageIndex(getPrvIndex())}>
         prv
       </button>
-      <img className="l-img" src={img_array[getPrvIndex()]}></img>
+      <img className="l-img" src={img_array[getPrvIndex()].img_link}></img>
 
       <button onClick={() => setFullScreenStatus(!fullScreenStatus)}>
         {fullScreenStatus ? (
           renderFullScreenImage()
         ) : (
-          <img className="img" src={img_array[currentImgIndex]} alt="errore" />
+          <img className="img" src={img_array[currentImgIndex].img_link} alt="errore" />
         )}
       </button>
 
-      <img className="r-img" src={img_array[getNextIndex()]}></img>
+      <img className="r-img" src={img_array[getNextIndex()].img_link}></img>
 
       <button
         className="next-img"

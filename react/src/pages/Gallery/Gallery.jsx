@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Gallery.css";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import { ImgSlideShow } from "../../components/ImgSlideShow/ImgSlideShow";
 import { ImgGallery } from "../../components/ImgGallery/ImgGallery";
-
+import axios from "axios"
 
 
 /*rendere i bottone evidenziato in base alla scelta selezionata, bisogna far 
@@ -12,6 +12,8 @@ Da aggiungere un paging system per la vista a gallery o un caricamento dinamico 
 per lo slideshow
 */
 
+
+
 export function Gallery()
 {
     let titolo_info = {
@@ -19,13 +21,25 @@ export function Gallery()
         search_bar_default_text: "test",
         search_buttond_default: "test",
       };
-    let img_array = [
-        "https://placehold.co/400?text=ciao",
-        "https://placehold.co/400?text=bellezze",
-        "https://placehold.co/400?text= trapani in fiamme",
-      ];
-      const[img_show, setImgShow] = useState(0)
 
+    const[img_show, setImgShow] = useState(0)
+    let[img_array, setImgArray] = useState([])
+    useEffect(()=>{
+        const fetchImages = async () => {
+            const response = await axios.get("http://localhost:8080/GalleryImages",
+                {
+                    params: { data: "" }
+                }
+            );
+            console.log(response.data);
+            setImgArray(response.data)
+        }
+
+     
+        fetchImages();
+        console.log(img_array.img_array)
+
+    },[])
     return(
         <div className="page-background">
             <PageTitle props = {titolo_info}/>
