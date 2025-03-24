@@ -10,9 +10,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const db = require("../models");
+const db = require("./models");
 
-const galleryImageRouter = require("../routes/GalleryImages_routes");
+const galleryImageRouter = require("./routes/GalleryImages_routes");
 app.use("/GalleryImages", galleryImageRouter);
 
 
