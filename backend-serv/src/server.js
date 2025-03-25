@@ -14,6 +14,8 @@ const db = require("./models");
 
 const galleryImageRouter = require("./routes/GalleryImages_routes");
 app.use("/GalleryImages", galleryImageRouter);
+const faqRouter = require("./routes/FAQ_routes");
+app.use("/Faq", faqRouter);
 
 
 

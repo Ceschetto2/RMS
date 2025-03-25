@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { DropDownInfo } from "../../components/DropDownInfo/DropDownInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./FAQ.css";
@@ -8,16 +9,20 @@ export function FAQ() {
     },
     { text: "domanda 2" },
   ];
+  const[searchValue, setSearchValue] = useState("")
+  const[FaqList, setFaqList] = useState("")
+  useEffect(()=>{
+    const fetchImages = async() => await (axios.get("http://localhost:8080/GalleryImages"),{
+      params:{data:searchValue}
+    })
 
-  let titolo_info = {
-    titolo: "FAQ",
-    search_bar_default_text: "test",
-    search_buttond_default: "test",
-  };
+  })
+
+
   return (
     <div className="faq-container">
         
-      <PageTitle props={titolo_info} />
+        <PageTitle title={"FAQ"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
       {lista_domande.map((domanda, index) => (
         <DropDownInfo key={index} props={domanda} />

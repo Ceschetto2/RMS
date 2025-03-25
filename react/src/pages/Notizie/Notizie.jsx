@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Notizie.css";
@@ -56,15 +57,12 @@ export function Notizie() {
       oggetto: "Oggetto 1",
     },
   ];
-  let titolo_info = {
-    titolo: "Notizie",
-    search_bar_default_text: "test",
-    search_buttond_default: "test",
-  };
+  const[searchValue, setSearchValue] = useState("")
 
   return (
     <div className="notizie">
-      <PageTitle props={titolo_info} />
+      <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
+
 
       {lista_notizie.map((notizia, index) => (
         <ContainerInfo key={index} props={notizia} />

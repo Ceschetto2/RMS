@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Bandi.css";
@@ -30,10 +31,11 @@ export function Bandi() {
     search_bar_default_text: "test",
     search_buttond_default: "test",
   };
-
+  const[searchValue,setSearchValue]= useState("")
   return (
     <div className="bandi">
-      <PageTitle props={titolo_info} />
+      <PageTitle title={"Bandi"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
+
 
       {lista_bandi.map((bando, index) => (
         <ContainerInfo key={index} props={bando} />

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Regolamento.css";
@@ -25,15 +26,11 @@ export function Regolamento() {
       descrizione: "descrizione 3",
     },
   ];
-  let titolo_info = {
-    titolo: "Regolamento",
-    search_bar_default_text: "test",
-    search_buttond_default: "test",
-  };
+  const[searchValue, setSearchValue] = useState("")
 
   return (
     <div className="regolamento">
-      <PageTitle props={titolo_info} />
+      <PageTitle title={"Regolamento"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
       {lista_regolamenti.map((regolamento, index) => (
         <ContainerInfo key={index} props={regolamento} />
