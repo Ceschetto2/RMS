@@ -52,7 +52,7 @@ export function ImgSlideShow({ img_array }) {
   function renderFullScreenImage() {
     return (
       <div className="test">
-        <img className="full-img" src={img_array[currentImgIndex]} />
+        <img className="full-img" src={img_array[currentImgIndex].img_link} />
       </div>
     );
   }
