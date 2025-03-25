@@ -11,3 +11,14 @@
     height: 100px;
     margin: 10px;
 }
+.full-img
+{
+    position: fixed;
+    width: auto;
+    height: 75%;
+
+}
+
+.button-img{
+    background-color: rgba(0, 0, 0, 0);
+}
