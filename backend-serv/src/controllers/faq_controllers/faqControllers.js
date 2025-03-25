@@ -1,6 +1,5 @@
 const { FaqQuestions, sequelize } = require("../../models");
 
-const { QueryTypes } = require("sequelize");
 
 exports.getFaqList = async (req, res) => {
   const { data } = req.query;
