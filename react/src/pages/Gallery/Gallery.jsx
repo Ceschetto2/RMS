@@ -25,22 +25,30 @@ export function Gallery() {
     };
 
     fetchImages();
-  }, [searchTerm]);
+  }, [searchTerm]); //la funzione di quary si richiama ogni qualvolta searchTerm viene modificato
+
   return (
     <div className="page-background">
       <PageTitle
         title="Gallery"
+        searchLabel="Search:"
         searchValue={searchTerm}
         setSearchValue={setSearchTerm}
       />
-      <div className="chng-visualization-button">
-        <button onClick={() => setImgShow(0)}> Gallery</button>
-        <button onClick={() => setImgShow(1)}> SlideShow</button>
-      </div>
-      {img_show === 1 ? (
-        <ImgSlideShow img_array={img_array} />
+      {img_array.length === 0 ? (
+        <div className="Errore">Non ci sono elementi</div>
       ) : (
-        <ImgGallery img_array={img_array} />
+        <>
+          <div className="chng-visualization-button">
+            <button onClick={() => setImgShow(0)}> Gallery</button>
+            <button onClick={() => setImgShow(1)}> SlideShow</button>
+          </div>
+          {img_show === 1 ? (
+            <ImgSlideShow img_array={img_array} />
+          ) : (
+            <ImgGallery img_array={img_array} />
+          )}
+        </>
       )}
     </div>
   );

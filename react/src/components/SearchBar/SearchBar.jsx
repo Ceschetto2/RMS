@@ -1,10 +1,10 @@
 import "./SearchBar.css";
 
-export function SearchBar({searchValue, setSearchValue}) {
+export function SearchBar({label, searchValue, setSearchValue}) {
 
   return (
     <div className="search-container">
-      <label className="label">Search:</label>
+      <label className="label">{label}</label>
       <input className="search-bar" name="search-query" value={searchValue}
       onChange={(e) =>setSearchValue(e.target.value)}
       />

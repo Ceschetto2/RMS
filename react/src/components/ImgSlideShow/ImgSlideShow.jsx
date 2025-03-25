@@ -6,12 +6,18 @@ export function ImgSlideShow({ img_array }) {
   const [fullScreenStatus, setFullScreenStatus] = useState(false);
 
   function getPrvIndex() {
-    if (img_array.length !== 0)
-      return currentImgIndex === 0 ? img_array.length - 1 : currentImgIndex - 1;
+    return img_array.length !== 0
+      ? currentImgIndex === img_array.length - 1
+        ? 0
+        : currentImgIndex + 1
+      : 0;
   }
   function getNextIndex() {
-    if (img_array.length !== 0)
-      return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;
+    return img_array.length !== 0
+      ? currentImgIndex === img_array.length - 1
+        ? 0
+        : currentImgIndex + 1
+      : 0;
   }
 
   return (
@@ -19,17 +25,21 @@ export function ImgSlideShow({ img_array }) {
       <button className="prv-img" onClick={() => setImageIndex(getPrvIndex())}>
         prv
       </button>
-      <img className="l-img" src={img_array[getPrvIndex()].img_link}></img>
+      <img className="l-img" src={img_array[getPrvIndex()].img_link} alt="errore"></img>
 
       <button onClick={() => setFullScreenStatus(!fullScreenStatus)}>
         {fullScreenStatus ? (
           renderFullScreenImage()
         ) : (
-          <img className="img" src={img_array[currentImgIndex].img_link} alt="errore" />
+          <img
+            className="img"
+            src={img_array[currentImgIndex].img_link}
+            alt="errore"
+          />
         )}
       </button>
 
-      <img className="r-img" src={img_array[getNextIndex()].img_link}></img>
+      <img className="r-img" src={img_array[getNextIndex()].img_link } alt="errore"></img>
 
       <button
         className="next-img"
@@ -42,7 +52,7 @@ export function ImgSlideShow({ img_array }) {
   function renderFullScreenImage() {
     return (
       <div className="test">
-        <img className="full-img" src={img_array[currentImgIndex]}/>
+        <img className="full-img" src={img_array[currentImgIndex]} />
       </div>
     );
   }
