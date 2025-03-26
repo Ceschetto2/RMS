@@ -15,7 +15,7 @@ export function Notizie() {
           params:{data: searchValue},
         }
       )
-      console.log(results)
+
       setListaNotizie(results.data)
     }
     fetchNotizie();
