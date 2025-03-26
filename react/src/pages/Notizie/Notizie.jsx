@@ -1,73 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Notizie.css";
+import axios from "axios"
 export function Notizie() {
-  let lista_notizie = [
-    {
-      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 1",
-      dataPubblicazione: "1/1/1/1",
-      oggetto: "Oggetto 1",
-    },
-    {
-      titolo: "titolo 2",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 2",
-    },
-    {
-      titolo: "titolo 3",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 3",
-    },
-    {
-      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 1",
-      dataPubblicazione: "1/1/1/1",
-      oggetto: "Oggetto 1",
-    },
-    {
-      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 1",
-      dataPubblicazione: "1/1/1/1",
-      oggetto: "Oggetto 1",
-    },
-    {
-      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 1",
-      dataPubblicazione: "1/1/1/1",
-      oggetto: "Oggetto 1",
-    },
-    {
-      titolo: "LNI sez.Ancona sbanca ai campionati regionali di jole ",
-      img_url:
-        "https://st2.depositphotos.com/6789684/12262/v/450/depositphotos_122620866-stock-illustration-illustration-of-flat-icon.jpg",
-      descrizione: "descrizione 1",
-      dataPubblicazione: "1/1/1/1",
-      oggetto: "Oggetto 1",
-    },
-  ];
+
   const[searchValue, setSearchValue] = useState("")
+  const[listaNotizie, setListaNotizie] = useState([])
+ 
+  useEffect(()=>{
+    const fetchNotizie = async() =>{
+      const results = await axios.get("http://localhost:8080/Notizie",
+        {
+          params:{data: searchValue},
+        }
+      )
+      console.log(results)
+      setListaNotizie(results.data)
+    }
+    fetchNotizie();
+  }, [searchValue])
+  
 
   return (
     <div className="notizie">
       <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
-
-      {lista_notizie.map((notizia, index) => (
-        <ContainerInfo key={index} props={notizia} />
+      {listaNotizie.map((notizia, index) => (
+        <ContainerInfo key={index} notizia={notizia} />
       ))}
- 
+
+    
     </div>
 
   );

@@ -5,7 +5,6 @@ export function PageTitle({ title,searchLabel, searchValue, setSearchValue }) {
 Search Bar da aggiungere il passaggio dei default sia per la searchbar in se
 sia per il bottone di ricerca.
 */
-console.log(searchValue)
 
   return (
     <div className="container-page-title">

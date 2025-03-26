@@ -16,7 +16,8 @@ const galleryImageRouter = require("./routes/GalleryImages_routes");
 app.use("/GalleryImages", galleryImageRouter);
 const faqRouter = require("./routes/FAQ_routes");
 app.use("/Faq", faqRouter);
-
+const notizieRouter = require("./routes/Notizie_routes");
+app.use("/Notizie", notizieRouter);
 
 
 db.sequelize.sync().then(() => {
