@@ -3,32 +3,32 @@ module.exports = (sequelize, Datatypes) => {
         ID_Utente:
         {
             type:Datatypes.INTEGER,
-            allownull:false,
+            allowNull:false,
             autoIncrement: true,
             primaryKey:true,
         },
         nome:
         {
             type:Datatypes.STRING,
-            allownull:false,
+            allowNull:false,
 
         },
         data_nascita:
         {
             type:Datatypes.STRING,
-            allownull:false,
+            allowNull:false,
             
         },
         ruolo:
         {
             type: Datatypes.STRING,
-            allownull:false,
+            allowNull:false,
 
         },
         mail:
         {
             type: Datatypes.STRING,
-            allownull:false,
+            allowNull:false,
             
         }
     },

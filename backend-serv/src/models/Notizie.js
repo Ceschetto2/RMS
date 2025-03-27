@@ -1,3 +1,5 @@
+const Regolamento = require("./Regolamento");
+
 module.exports = (sequelize, DataTypes) =>{
     const Notizia = sequelize.define("Notizia", {
         ID_Notizia: {
@@ -35,7 +37,14 @@ module.exports = (sequelize, DataTypes) =>{
     },{
         tableName: 'Notizie',
     }
-    )
+)
+
+    Notizia.associate=(models)=>{
+        Notizia.belongsTo(models.Utente,{
+            foreignKey:"ID_Utente",
+        })
+    }
+    
     return Notizia;
 
 

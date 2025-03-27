@@ -18,6 +18,10 @@ const faqRouter = require("./routes/FAQ_routes");
 app.use("/Faq", faqRouter);
 const notizieRouter = require("./routes/Notizie_routes");
 app.use("/Notizie", notizieRouter);
+const regolamentoRouter = require("./routes/Regolamento_routes")
+app.use("/Regolamento", regolamentoRouter)
+const bandiRouter = require("./routes/Bandi_route")
+app.use("/Bandi", bandiRouter)
 
 
 db.sequelize.sync().then(() => {
