@@ -24,7 +24,10 @@ module.exports = (sequelize, DataTypes) =>{
         },
 
 
-    })
+    },{
+        tableName: 'Notizie',
+    }
+    )
     return Notizia;
 
 

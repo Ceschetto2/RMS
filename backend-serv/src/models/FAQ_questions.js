@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const FaqQuestions = sequelize.define("FaqQuestions", {
+    const FaqQuestion = sequelize.define("FaqQuestions", {
         question: {
             type:DataTypes.STRING,
             allowNull:false,
@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
 
         },
 
+    },
+    {
+        tableName: 'FaqQuestions',
     })
-    return FaqQuestions;
+    return FaqQuestion;
 };
