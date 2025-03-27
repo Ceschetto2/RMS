@@ -1,4 +1,3 @@
-const Regolamento = require("./Regolamento");
 
 module.exports = (sequelize, DataTypes) =>{
     const Notizia = sequelize.define("Notizia", {

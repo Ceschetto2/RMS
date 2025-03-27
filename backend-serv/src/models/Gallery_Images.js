@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull:true,
             references:{
-                model: "Utente",
+                model: "Utenti",
                 key: "ID_Utente"
 
             },
@@ -31,5 +31,12 @@ module.exports = (sequelize, DataTypes) => {
     {
         tableName: 'GalleryImages',
     })
+    GalleryImage.associate = (models)=>{
+        GalleryImage.belongsTo(models.Utente,
+            {
+                foreignKey:"ID_Utente",
+            }
+        )
+    }
     return GalleryImage;
 };

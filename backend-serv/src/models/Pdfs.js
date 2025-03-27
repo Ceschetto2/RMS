@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) =>{
             otherKey:"ID_Bando"
             }
         )
+        Pdf.belongsToMany(models.Regola,
+            {
+            through:"RegolamentoPdf",
+            foreignKey:"file_path",
+            otherKey:"ID_Regola"
+            }
+        )
     }
 
     return Pdf;

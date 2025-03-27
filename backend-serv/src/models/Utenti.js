@@ -36,5 +36,34 @@ module.exports = (sequelize, Datatypes) => {
         tableName: 'Utenti',
     },
 )
+Utente.associate = (models)=>{
+    Utente.hasMany(models.Bando,
+        {
+            foreignKey:"ID_Utente"
+        }
+    )
+    Utente.hasMany(models.Regola,
+        {
+            foreignKey:"ID_Utente"
+        }
+        
+    )
+    Utente.hasMany(models.Notizia,
+        {
+            foreignKey:"ID_Utente"
+        }
+    )
+    Utente.hasMany(models.GalleryImage,
+        {
+            foreignKey:"ID_Utente"
+        }
+    )
+    Utente.hasMany(models.FaqQuestion,
+        {
+            foreignKey: "ID_Utente"
+        }
+    )
+}
+
     return Utente;
 }

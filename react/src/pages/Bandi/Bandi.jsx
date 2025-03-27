@@ -21,7 +21,7 @@ export function Bandi() {
       <PageTitle title={"Bandi"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
 
-      {lista_bandi.map((bando, index) => (
+      {listaBandi.map((bando, index) => (
         <ContainerInfo key={index} props={bando} />
       ))}
  
