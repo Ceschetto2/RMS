@@ -1,14 +1,14 @@
-const { FaqQuestions, sequelize } = require("../../models");
+const { FaqQuestion, sequelize } = require("../../models");
 
 
 exports.getFaqList = async (req, res) => {
   const { data } = req.query;
   console.log(!data);
   const risultati = await (!data
-    ? FaqQuestions.findAll()
+    ? FaqQuestion.findAll()
     : sequelize.query("SELECT * FROM FaqQuestions where question like :req", {
         replacements: { req: `%${data}%` },
-        model: FaqQuestions,
+        model: FaqQuestion,
         mapToModel: true,
       }));
   res.json(risultati);

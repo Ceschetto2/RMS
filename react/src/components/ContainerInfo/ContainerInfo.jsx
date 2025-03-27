@@ -1,19 +1,19 @@
 import "./ContainerInfo.css"
 
-export function ContainerInfo({notizia})
+export function ContainerInfo({props})
 {
-    if (!notizia) return null;
+    if (!props) return null;
     return(
         <div className="container-info">
-            <img className="immagine-info" src={notizia.img_link}  alt ="Immagine mancante"></img>
+            <img className="immagine-info" src={props.img_link}  alt ="Immagine mancante"></img>
             <div className="text-box">
                 <div className="header-info-box">
-                    <text className="titolo-info" alt = "titolo"> {notizia.titolo} </text>
-                    <text className="data-pubblicazione-info" alt = "nan "> data pubblicazione: {transformDate(notizia.createdAt)}  </text>
+                    <text className="titolo-info" alt = "titolo"> {props.titolo} </text>
+                    <text className="data-pubblicazione-info" alt = "nan "> data pubblicazione: {transformDate(props.createdAt)}  </text>
 
                 </div>
-                <text className="oggetto-info" alt = "oggetto"> {notizia.oggetto}  </text>    
-                <text className="descrizione-info" alt = "descrizione "> {notizia.descrizione}  </text>
+                <text className="oggetto-info" alt = "oggetto"> {props.oggetto}  </text>    
+                <text className="descrizione-info" alt = "descrizione "> {props.descrizione}  </text>
             </div>
         </div>
     );

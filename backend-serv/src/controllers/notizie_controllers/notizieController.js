@@ -6,7 +6,7 @@ exports.getNotizie = async(req,res) =>{
     const results = await (!data?
         Notizia.findAll() 
         : 
-        sequelize.query("SELECT * FROM Notizia where titolo like :req or oggetto like :req",
+        sequelize.query("SELECT * FROM Notizie where titolo like :req or oggetto like :req",
             {
                 replacements: { req: `%${data}%` },
                 model: Notizia,

@@ -1,4 +1,4 @@
-
+const Utenti=  require("./Utenti")
 
 module.exports = (sequelize, DataTypes) => {
     const GalleryImage = sequelize.define("GalleryImage", {
@@ -18,6 +18,15 @@ module.exports = (sequelize, DataTypes) => {
             allowNull:true,
 
         },
+        ID_Utente:{
+            type:DataTypes.INTEGER,
+            allowNull:true,
+            references:{
+                model:"Utenti",
+                key: "ID_Utente"
+
+            },
+        }
     },
     {
         tableName: 'GalleryImages',

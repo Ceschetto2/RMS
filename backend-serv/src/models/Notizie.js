@@ -22,6 +22,14 @@ module.exports = (sequelize, DataTypes) =>{
             type: DataTypes.STRING,
             allowNull:true,
         },
+        ID_Utente:{
+            type:DataTypes.INTEGER,
+            references:{
+                model:"Utenti",
+                key: "ID_Utente"
+
+            },
+        },
 
 
     },{

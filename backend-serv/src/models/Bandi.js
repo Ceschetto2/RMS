@@ -10,10 +10,7 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
 
             },
-            file_path:{
-                type: DataTypes.STRING,
-                allowNull:true,
-            },
+
             titolo:{
                 type: DataTypes.STRING,
                 allowNull:false,
@@ -29,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             ID_Utente:{
                 type:DataTypes.INTEGER,
                 references:{
-                    models:"Utenti",
+                    model:"Utenti",
                     key: "ID_Utente"
 
                 },

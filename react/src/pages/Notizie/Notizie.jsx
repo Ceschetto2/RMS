@@ -19,6 +19,7 @@ export function Notizie() {
       setListaNotizie(results.data)
     }
     fetchNotizie();
+    console.log(listaNotizie)
   }, [searchValue])
   
 
@@ -26,8 +27,9 @@ export function Notizie() {
     <div className="notizie">
       <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      {listaNotizie.map((notizia, index) => (
-        <ContainerInfo key={index} notizia={notizia} />
+      {listaNotizie.length===0 ? <div>Nessun risultato trovato</div>:
+      listaNotizie.map((notizia, index) => (
+        <ContainerInfo key={index} props={notizia} />
       ))}
 
     

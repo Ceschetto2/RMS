@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const FaqQuestion = sequelize.define("FaqQuestions", {
+    const FaqQuestion = sequelize.define("FaqQuestion", {
         question: {
             type:DataTypes.STRING,
             allowNull:false,
@@ -10,6 +10,14 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING,
             allowNull:false,
 
+        },
+        ID_Utente:{
+            type:DataTypes.INTEGER,
+            references:{
+                model:"Utenti",
+                key: "ID_Utente"
+
+            },
         },
 
     },

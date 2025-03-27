@@ -7,7 +7,7 @@ export function Regolamento() {
   let lista_regolamenti= [
     {
       titolo: "Regolamento 1 ",
-      img_url:
+      img_link:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png",
       descrizione: "descrizione 1",
       dataPubblicazione: "1/1/1/1",
@@ -15,13 +15,13 @@ export function Regolamento() {
     },
     {
       titolo: "Regolamento 2",
-      img_url:
+      img_link:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png",
       descrizione: "descrizione 2",
     },
     {
       titolo: "Regolamento 3",
-      img_url:
+      img_link:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png",
       descrizione: "descrizione 3",
     },
