@@ -15,7 +15,7 @@ export function ImgGallery({ img_array }) {
   );
 
   function renderFullScreenImage() {
-    console.log("kitemurt")
+
     return (
       <div className="test" onClick={()=>setFullScreenImage(null)}>
         <img className="full-img" src={fullScreenImage} />
