@@ -5,6 +5,20 @@ import { ImgSlideShow } from "../../components/ImgSlideShow/ImgSlideShow";
 import { ImgGallery } from "../../components/ImgGallery/ImgGallery";
 import axios from "axios";
 
+/* 
+Il componente Gallery gestisce e visualizza un elenco di immagini recuperate da un'API.
+- Utilizza useState per gestire lo stato locale:
+  - searchTerm memorizza il valore della barra di ricerca.
+  - img_show determina la modalità di visualizzazione (galleria o slideshow).
+  - img_array contiene l'elenco delle immagini recuperate dall'API.
+- useEffect viene utilizzato per eseguire una chiamata API ogni volta che searchTerm cambia.
+- La funzione fetchImages recupera i dati dall'endpoint "http://localhost:8080/GalleryImages" tramite axios,
+  passando il valore di searchTerm come parametro di ricerca.
+- Se non ci sono immagini disponibili, viene mostrato un messaggio di errore "There are no elements".
+- L'utente può alternare tra la visualizzazione in galleria (ImgGallery) e slideshow (ImgSlideShow) tramite pulsanti.
+- Lo stile del componente è gestito tramite il file CSS "Gallery.css".
+*/
+
 /*rendere i bottone evidenziato in base alla scelta selezionata, bisogna far 
 variare il css in base allo stato della variabile img_show
 Da aggiungere un paging system per la vista a gallery o un caricamento dinamico delle immagini
@@ -36,7 +50,7 @@ export function Gallery() {
         setSearchValue={setSearchTerm}
       />
       {img_array.length === 0 ? (
-        <div className="Errore">Non ci sono elementi</div>
+        <div className="Error">There are no elements</div>
       ) : (
         <>
           <div className="chng-visualization-button">

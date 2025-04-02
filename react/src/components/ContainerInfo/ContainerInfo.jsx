@@ -1,5 +1,14 @@
 import "./ContainerInfo.css"
 
+/* 
+Il componente ContainerInfo rappresenta un contenitore per visualizzare informazioni dettagliate su un elemento.
+- Accetta una prop:
+  - props: un oggetto contenente i dati da visualizzare, come immagine, titolo, data di pubblicazione, oggetto e descrizione.
+- Se la prop props non è presente, il componente restituisce null.
+- Mostra un'immagine, un titolo, una data di pubblicazione (formattata tramite la funzione transformDate), un oggetto e una descrizione.
+- Lo stile del componente è gestito tramite il file CSS "ContainerInfo.css".
+*/
+
 export function ContainerInfo({props})
 {
     if (!props) return null;

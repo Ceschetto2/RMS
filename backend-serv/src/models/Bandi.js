@@ -1,3 +1,17 @@
+/* 
+Il file Bandi.js definisce il modello Bando per interagire con la tabella "Bandi" nel database.
+- Campi definiti:
+  - ID_Bando: chiave primaria, intero auto-incrementato.
+  - titolo: stringa, obbligatoria.
+  - oggetto: stringa, obbligatoria.
+  - descrizione: stringa, obbligatoria.
+  - ID_Utente: chiave esterna che fa riferimento alla tabella "Utenti".
+- Configura il nome della tabella come "Bandi".
+- Associazioni:
+  - Ogni bando appartiene a un utente tramite la chiave esterna "ID_Utente".
+  - Ogni bando può essere associato a molti PDF tramite la tabella intermedia "BandiPDF".
+- Esporta il modello per essere utilizzato in altre parti dell'applicazione.
+*/
 
 module.exports = (sequelize, DataTypes) => {
     const Bando = sequelize.define(

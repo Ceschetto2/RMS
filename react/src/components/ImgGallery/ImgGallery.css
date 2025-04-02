@@ -2,7 +2,7 @@
     width: 80%;
     height: 70vh;
     border: 2px;
-    border-color: black;
+    border-color: black; /* Colore del bordo */
     min-height: 400px;
 }
 .img-gallery{
@@ -13,12 +13,12 @@
 }
 .full-img
 {
-    position: fixed;
-    width: auto;
+    position: fixed; /* Posizione fissa per sovrapporre l'immagine */
+    width: auto; /* Larghezza automatica per mantenere le proporzioni */
     height: 75%;
 
 }
 
 .button-img{
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0); /* Colore di sfondo trasparente */
 }
