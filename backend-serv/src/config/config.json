@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": "admin",
+    "password": "password",
     "database": "RMS",
     "host": "127.0.0.1",
     "dialect": "mariadb"

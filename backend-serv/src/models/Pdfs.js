@@ -1,19 +1,21 @@
 /* 
 Il file Pdfs.js definisce il modello Pdf per interagire con la tabella "Pdfs" nel database.
 - Campi definiti:
-  - file_path: chiave primaria, stringa che rappresenta il percorso del file PDF.
-  - preview: stringa che rappresenta il percorso dell'immagine di anteprima del PDF.
+    - file_path: stringa, chiave primaria, obbligatoria.
+    - preview: stringa, obbligatoria.
+    - createdAt: data, obbligatoria, gestita automaticamente.
+    - updatedAt: data, obbligatoria, gestita automaticamente.
 - Configura il nome della tabella come "Pdfs".
 - Associazioni:
-  - Un PDF può essere associato a molti bandi tramite la tabella intermedia "BandiPDF".
-  - Un PDF può essere associato a molte regole tramite la tabella intermedia "RegolamentoPdf".
+    - Ogni PDF può essere associato a più bandi tramite la tabella intermedia "NoticePdfs".
+    - Ogni PDF può essere associato a più regolamenti interni tramite la tabella intermedia "InternalRegulationsPdfs".
 - Esporta il modello per essere utilizzato in altre parti dell'applicazione.
 */
 
-const Bandi = require("./Bandi")
+const Bandi = require("./Notices")
 
 module.exports = (sequelize, DataTypes) =>{
-    const Pdf = sequelize.define("Pdf",{
+    const Pdfs = sequelize.define("Pdfs",{
         file_path:{
             type: DataTypes.STRING,
             allowNull:false,
@@ -22,27 +24,35 @@ module.exports = (sequelize, DataTypes) =>{
         preview:{
             type:DataTypes.STRING,
             allowNull:false,
+        },
+        createdAt:{
+            type: DataTypes.DATE,
+            allowNull:false,
+        },
+        updatedAt:{
+            type: DataTypes.DATE,
+            allowNull:false,
         }
     },
     {
         tableName: 'Pdfs',
     })
-    Pdf.associate = (models) =>{
-        Pdf.belongsToMany(models.Bando,
+    Pdfs.associate = (models) =>{
+        Pdfs.belongsToMany(models.Notices,
             {
-            through:"BandiPDF",
+            through:"NoticesPdfs",
             foreignKey:"file_path",
-            otherKey:"ID_Bando"
+            otherKey:"notices_id"
             }
         )
-        Pdf.belongsToMany(models.Regola,
+        Pdfs.belongsToMany(models.InternalRegulations,
             {
-            through:"RegolamentoPdf",
+            through:"InternalRegulationsPdfs",
             foreignKey:"file_path",
-            otherKey:"ID_Regola"
+            otherKey:"rule_id"
             }
         )
     }
 
-    return Pdf;
+    return Pdfs;
 }

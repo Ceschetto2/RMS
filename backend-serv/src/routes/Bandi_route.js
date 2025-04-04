@@ -9,17 +9,16 @@ Il file Bandi_route.js definisce le roots per gestire le richieste relative ai b
 */
 
 const express  = require("express")
-const { Bando } = require("../models")
+const { Notices } = require("../models")
 const router  = express.Router()
 
 router.get("/", async(req,res)=>{
-    const response = await Bando.findAll()
+    const response = await Notices.findAll()
     res.json(response)
 })
 
 router.post("/", async(req,res)=>{
-    const regole = req.body
-    await Bando.bulkCreate()
+    await Notices.bulkCreate()
 })
 
 module.exports = router;

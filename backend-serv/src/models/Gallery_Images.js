@@ -1,55 +1,71 @@
 /* 
 Il file Gallery_Images.js definisce il modello GalleryImage per interagire con la tabella "GalleryImages" nel database.
 - Campi definiti:
-  - img_link: stringa obbligatoria che rappresenta il link all'immagine.
-  - title: stringa opzionale che rappresenta il titolo dell'immagine.
-  - informations: stringa opzionale che contiene informazioni aggiuntive sull'immagine.
-  - ID_Utente: chiave esterna opzionale che fa riferimento alla tabella "Utenti".
+    - img_id: chiave primaria, intero auto-incrementato.
+    - img_url: stringa, obbligatoria.
+    - title: stringa, opzionale.
+    - informations: stringa, opzionale.
+    - uploaded_by: chiave esterna che fa riferimento alla tabella "Users".
+    - createdAt: data, obbligatoria, gestita automaticamente.
+    - updatedAt: data, obbligatoria, gestita automaticamente.
 - Configura il nome della tabella come "GalleryImages".
 - Associazioni:
-  - Ogni immagine appartiene a un utente tramite la chiave esterna "ID_Utente".
+    - Ogni immagine della galleria appartiene a un utente tramite la chiave esterna "user_id".
 - Esporta il modello per essere utilizzato in altre parti dell'applicazione.
 */
 
-const Utenti=  require("./Utenti")
 
 module.exports = (sequelize, DataTypes) => {
-    const GalleryImage = sequelize.define("GalleryImage", {
-        img_link: {
-            type:DataTypes.STRING,
+    const GalleryImages = sequelize.define("GalleryImages", {
+        img_id: {
+            type: DataTypes.INTEGER(11),
             allowNull:false,
+            autoIncrement: true,
+            primaryKey: true
 
+        },
+        img_url: {
+            type:DataTypes.STRING(255),
+            allowNull:false,
 
         },
         title:{
-            type:DataTypes.STRING,
+            type:DataTypes.STRING(255),
             allowNull:true,
 
         },
         informations:{
-            type:DataTypes.STRING,
+            type:DataTypes.STRING(255),
             allowNull:true,
 
         },
-        ID_Utente:{
-            type:DataTypes.INTEGER,
+        uploaded_by:{
+            type:DataTypes.INTEGER(11),
             allowNull:true,
             references:{
-                model: "Utenti",
-                key: "ID_Utente"
+                model: "Users",
+                key: "user_id"
 
             },
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
         }
     },
     {
         tableName: 'GalleryImages',
     })
-    GalleryImage.associate = (models)=>{
-        GalleryImage.belongsTo(models.Utente,
+    GalleryImages.associate = (models)=>{
+        GalleryImages.belongsTo(models.Users,
             {
-                foreignKey:"ID_Utente",
+                foreignKey:"user_id",
             }
         )
     }
-    return GalleryImage;
+    return GalleryImages;
 };

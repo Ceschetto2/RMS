@@ -7,7 +7,7 @@ Il file faqControllers.js definisce i metodi per gestire le operazioni relative 
 - Restituisce i risultati delle operazioni come risposta JSON.
 */
 
-const { FaqQuestion, sequelize } = require("../../models");
+const { FaqQuestions, sequelize } = require("../../models");
 
 /* 
   Recupera le domande frequenti (FAQ) dal database.
@@ -19,14 +19,14 @@ const { FaqQuestion, sequelize } = require("../../models");
 exports.getFaqList = async (req, res) => {
   const { data } = req.query;
   console.log(!data);
-  const risultati = await (!data
-    ? FaqQuestion.findAll()
+  const results = await (!data
+    ? FaqQuestions.findAll()
     : sequelize.query("SELECT * FROM FaqQuestions where question like :req", {
         replacements: { req: `%${data}%` },
-        model: FaqQuestion,
+        model: FaqQuestions,
         mapToModel: true,
       }));
-  res.json(risultati);
+  res.json(results);
 };
 
 /* 
@@ -38,7 +38,7 @@ exports.getFaqList = async (req, res) => {
 
 exports.sendFaqQuestion = async(req,res) => {
     const qa = req.body
-    FaqQuestion.bulkCreate(qa)
+    FaqQuestions.bulkCreate(qa)
     res.json("Inserimento avvenuto")
 
 

@@ -7,7 +7,7 @@ Il file notizieController.js definisce i metodi per gestire le operazioni relati
 - Restituisce i risultati delle operazioni come risposta JSON.
 */
 
-const {Notizia, sequelize} = require("../../models")
+const {News, sequelize} = require("../../models")
 
 /* 
   Recupera le notizie dal database.
@@ -16,16 +16,16 @@ const {Notizia, sequelize} = require("../../models")
     notizie il cui titolo o oggetto contengano il valore specificato.
 */
 
-exports.getNotizie = async(req,res) =>{
+exports.getNews = async(req,res) =>{
     const {data} = req.query
 
     const results = await (!data?
-        Notizia.findAll() 
+        News.findAll() 
         : 
         sequelize.query("SELECT * FROM Notizie where titolo like :req or oggetto like :req",
             {
                 replacements: { req: `%${data}%` },
-                model: Notizia,
+                model: News,
                 mapToModel: true,
             }
         )
@@ -46,7 +46,7 @@ exports.sendNotizie = async(req,res) =>{
     const notiz= req.body
     console.log(notiz);
     try{
-    await Notizia.bulkCreate(notiz)
+    await News.bulkCreate(notiz)
     }
     catch(error){
         res.json(error)

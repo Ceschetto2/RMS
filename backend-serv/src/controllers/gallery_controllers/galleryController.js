@@ -7,7 +7,7 @@ Il file galleryController.js definisce i metodi per gestire le operazioni relati
 - Restituisce i risultati delle operazioni come risposta JSON.
 */
 
-const { GalleryImage, sequelize } = require("../../models");
+const { GalleryImages, sequelize } = require("../../models");
 
 /*
   Recupera le immagini dalla galleria.
@@ -25,12 +25,12 @@ exports.getImages = async (req, res) => {
     const {data} = req.query
   
     const listOfImages = await ( (!data)
-      ? GalleryImage.findAll()
+      ? GalleryImages.findAll()
       : sequelize.query(
           "SELECT * FROM GalleryImages where title like :req OR informations like :req",
           {
             replacements: { req: `%${data}%` },
-            model: GalleryImage,
+            model: GalleryImages,
             mapToModel: true,
   
             // The type of query you are executing. The query type affects how results are formatted before they are passed back.
@@ -52,6 +52,6 @@ exports.getImages = async (req, res) => {
   exports.sendImages = async (req, res) => {
     const imgs = req.body;
   
-    await GalleryImage.bulkCreate(imgs);
+    await GalleryImages.bulkCreate(imgs);
     res.json("Inserimento avvenuto con successo");
   }

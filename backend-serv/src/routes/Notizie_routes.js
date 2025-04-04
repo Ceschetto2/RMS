@@ -9,12 +9,12 @@ Il file Notizie_routes.js definisce le roots per gestire le richieste relative a
 */
 
 const express = require("express");
-const  NotizieController  = require("../controllers/notizie_controllers/notizieController");
+const  newsController  = require("../controllers/news_controllers/newsController");
 
 const router = express.Router();
 
 
-router.get("/", NotizieController.getNotizie)
-router.post("/", NotizieController.sendNotizie)
+router.get("/", newsController.getNotizie)
+router.post("/", newsController.sendNotizie)
 
 module.exports = router;
