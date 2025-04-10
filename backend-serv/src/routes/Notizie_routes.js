@@ -14,7 +14,7 @@ const  newsController  = require("../controllers/news_controllers/newsController
 const router = express.Router();
 
 
-router.get("/", newsController.getNotizie)
+router.get("/", newsController.getNews)
 router.post("/", newsController.sendNotizie)
 
 module.exports = router;
