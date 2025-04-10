@@ -42,7 +42,7 @@ exports.getNews = async(req,res) =>{
   - In caso di successo, restituisce un messaggio di conferma.
 */
 
-exports.sendNotizie = async(req,res) =>{
+exports.sendNews = async(req,res) =>{
     const notiz= req.body
     console.log(notiz);
     try{

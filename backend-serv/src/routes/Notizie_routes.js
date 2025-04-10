@@ -15,6 +15,6 @@ const router = express.Router();
 
 
 router.get("/", newsController.getNews)
-router.post("/", newsController.sendNotizie)
+router.post("/", newsController.sendNews)
 
 module.exports = router;
