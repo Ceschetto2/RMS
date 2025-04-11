@@ -34,7 +34,7 @@ export function Gallery() {
       const response = await axios.get("http://localhost:8080/GalleryImages", {
         params: { data: searchTerm },
       });
-      console.log(response.data);
+      
       setImgArray(response.data);
     };
 
