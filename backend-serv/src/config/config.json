@@ -19,5 +19,12 @@
     "database": "RMS_production",
     "host": "127.0.0.1",
     "dialect": "mariadb"
+  },
+  "production2": {
+    "username": "root",
+    "password": null,
+    "database": "RMS_production",
+    "host": "127.0.0.1",
+    "dialect": "mariadb"
   }
 }
