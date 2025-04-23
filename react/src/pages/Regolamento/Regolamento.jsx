@@ -30,7 +30,7 @@ export function Regolamento() {
       <PageTitle title={"Regolamento"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
 
       {listaRegole.map((regolamento, index) => (
-        <ContainerInfo key={index} props={regolamento} />
+        <ContainerInfo key={index} title={regolamento.title} object={regolamento.object} description={regolamento.body} createdAt={regolamento.createdAt} />
       ))}
  
     </div>

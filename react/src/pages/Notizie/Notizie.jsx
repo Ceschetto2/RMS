@@ -42,7 +42,7 @@ export function Notizie() {
 
       {listaNotizie.length===0 ? <div>Nessun risultato trovato</div>:
       listaNotizie.map((notizia, index) => (
-        <ContainerInfo key={index} props={notizia} />
+        <ContainerInfo key={index} img_url={notizia.img_url} description={notizia.description} title={notizia.title} object={notizia.object} createdAt = {notizia.createdAt}/>
       ))}
 
     

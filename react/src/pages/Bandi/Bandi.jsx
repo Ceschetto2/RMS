@@ -33,7 +33,7 @@ export function Bandi() {
 
 
       {listaBandi.map((bando, index) => (
-        <ContainerInfo key={index} props={bando} />
+        <ContainerInfo key={index} title={bando.title} object={bando.object} description={bando.body} createdAt={bando.createdAt} />
       ))}
  
     </div>

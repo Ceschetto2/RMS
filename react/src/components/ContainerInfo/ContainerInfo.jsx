@@ -9,20 +9,20 @@ Il componente ContainerInfo rappresenta un contenitore per visualizzare informaz
 - Lo stile del componente è gestito tramite il file CSS "ContainerInfo.css".
 */
 
-export function ContainerInfo({props})
+export function ContainerInfo({img_url, title, object, description, createdAt})
 {
-    if (!props) return null;
+    if (!(title || object || description)) return null;
     return(
         <div className="container-info">
-            <img className="immagine-info" src={props.img_link}  alt ="Immagine mancante"></img>
+            <img className="immagine-info" src={img_url}  alt ="Immagine mancante"></img>
             <div className="text-box">
                 <div className="header-info-box">
-                    <text className="titolo-info" alt = "titolo"> {props.titolo} </text>
-                    <text className="data-pubblicazione-info" alt = "nan "> data pubblicazione: {transformDate(props.createdAt)}  </text>
+                    <text className="titolo-info" alt = "titolo"> {title} </text>
+                    <text className="data-pubblicazione-info" alt = "nan "> data pubblicazione: {transformDate(createdAt)}  </text>
 
                 </div>
-                <text className="oggetto-info" alt = "oggetto"> {props.oggetto}  </text>    
-                <text className="descrizione-info" alt = "descrizione "> {props.descrizione}  </text>
+                <text className="oggetto-info" alt = "oggetto"> {object}  </text>    
+                <text className="descrizione-info" alt = "descrizione "> {description}  </text>
             </div>
         </div>
     );
