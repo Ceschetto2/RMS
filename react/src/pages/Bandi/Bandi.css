@@ -1,10 +1,10 @@
 .bandi {
-    display: flex;             /* Abilita il layout flex */
-    flex-direction: column;    /* Dispone gli elementi verticalmente */
-    justify-content: center; /* Center vertically */
-    align-items: center;       /* Center horizontally */
+    display: flex; /* Abilita il layout flex */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 10px;              
-    padding: 0;                /* Facoltativo, rimuove padding di default */
+    padding: 0; /* Facoltativo, rimuove padding di default */
     background-color:#0B0B22;
     width: 1200px;
     border-radius: 10px;

@@ -1,27 +1,48 @@
+import { useEffect, useState } from "react";
 import { DropDownInfo } from "../../components/DropDownInfo/DropDownInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
+import axios from "axios";
 import "./FAQ.css";
-export function FAQ() {
-  let lista_domande = [
-    {
-      text: "domanda 1",
-    },
-    { text: "domanda 2" },
-  ];
 
-  let titolo_info = {
-    titolo: "FAQ",
-    search_bar_default_text: "test",
-    search_buttond_default: "test",
-  };
+/* 
+Il componente FAQ gestisce e visualizza un elenco di domande frequenti (FAQ) recuperate da un'API.
+- Utilizza useState per gestire lo stato locale:
+  - searchValue memorizza il valore della barra di ricerca.
+  - FaqList contiene l'elenco delle FAQ recuperate dall'API.
+- useEffect viene utilizzato per eseguire una chiamata API ogni volta che searchValue cambia.
+- La funzione fetchFaq recupera i dati dall'endpoint "http://localhost:8080/Faq" tramite axios,
+  passando il valore di searchValue come parametro di ricerca.
+- Ogni FAQ recuperata viene visualizzata tramite il componente DropDownInfo, che riceve la domanda e la risposta come prop.
+- Lo stile del componente è gestito tramite il file CSS "FAQ.css".
+*/
+
+export function FAQ() {
+
+  const [searchValue, setSearchValue] = useState("");
+  const [FaqList, setFaqList] = useState([]);
+  useEffect(() => {
+    const fetchFaq = async () => {
+      const response = await axios.get("http://localhost:8080/Faq", {
+        params: { data: searchValue },
+      });
+
+      setFaqList(response.data);
+      
+    };
+    fetchFaq();
+
+  }, [searchValue]);
+
   return (
     <div className="faq-container">
-        
-      <PageTitle props={titolo_info} />
+      <PageTitle
+        title={"FAQ"}
+        searchLabel={"Search:"}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
-      {lista_domande.map((domanda, index) => (
-        <DropDownInfo key={index} props={domanda} />
-      ))}
+      {FaqList.map((domanda, index)=>(<DropDownInfo key={index} answare={domanda.answare} question={domanda.question} />))}
     </div>
   );
 }

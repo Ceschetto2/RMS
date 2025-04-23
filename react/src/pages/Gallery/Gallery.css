@@ -1,9 +1,9 @@
 .page-background
 {
-    display: flex;
+    display: flex; /* Imposta un layout flessibile per il contenitore */
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: flex-start; /* Allinea gli elementi all'inizio del contenitore */
+    align-items: center; /* Centra gli elementi orizzontalmente */
     margin: 10px;
     padding: 0;
     background-color: #0B0B22;

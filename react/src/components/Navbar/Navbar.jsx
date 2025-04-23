@@ -5,6 +5,15 @@ import { useState } from "react";
 import "./Navbar.css";
 import { LoginPopup } from "../LoginPopup/LoginPopup";
 
+/* 
+Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
+- Include collegamenti (Link) a diverse sezioni dell'applicazione, come Home, Gallery, Notizie, Bandi, Regolamento e FAQ.
+- Ogni collegamento è rappresentato da un pulsante con uno stile personalizzato.
+- Contiene un'immagine cliccabile che funge da collegamento alla homepage.
+- Include un pulsante "Login" che attiva una funzione passata come prop (handlePopupClick), probabilmente per aprire un popup di login.
+- Lo stile del componente è gestito tramite il file CSS "Navbar.css".
+*/
+
 export function Navbar({handlePopupClick}) {
 
   return (

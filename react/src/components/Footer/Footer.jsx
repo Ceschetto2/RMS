@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
 
+/* 
+Il componente Footer rappresenta il piè (parte inferiore) di pagina dell'applicazione.
+- Contiene tre sezioni principali:
+  1. Contatti: mostra informazioni di contatto come email e numero di telefono.
+  2. Link utili: include collegamenti a pagine come Privacy Policy e Termini e condizioni.
+  3. Seguici: fornisce link ai profili social come Facebook, Twitter e Instagram.
+- Mostra una lista di sviluppatori (props) con nome, immagine e link ai loro profili social, utilizzando il componente DevContact.
+- Lo stile del componente è gestito tramite il file CSS "Footer.css".
+*/
+
 export function Footer( {props}) {
 
 
