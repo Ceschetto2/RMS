@@ -31,7 +31,7 @@ export function ImgSlideShow({ img_array }) {
       </button>
       <img
         className="l-img"
-        src={img_array[getPrvIndex()].img_link}
+        src={img_array[getPrvIndex()].img_url}
         alt="errore"
       ></img>
 
@@ -41,7 +41,7 @@ export function ImgSlideShow({ img_array }) {
         ) : (
           <img
             className="img"
-            src={img_array[currentImgIndex].img_link}
+            src={img_array[currentImgIndex].img_url}
             alt="errore"
           />
         )}
@@ -49,7 +49,7 @@ export function ImgSlideShow({ img_array }) {
 
       <img
         className="r-img"
-        src={img_array[getNextIndex()].img_link}
+        src={img_array[getNextIndex()].img_url}
         alt="errore"
       ></img>
 
@@ -64,7 +64,7 @@ export function ImgSlideShow({ img_array }) {
   function renderFullScreenImage() {
     return (
       <div className="test">
-        <img className="full-img" src={img_array[currentImgIndex].img_link} />
+        <img className="full-img" src={img_array[currentImgIndex].img_url} />
       </div>
     );
   }
