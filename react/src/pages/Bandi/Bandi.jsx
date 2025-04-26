@@ -6,7 +6,7 @@ import "./Bandi.css";
 /* 
 Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'API.
 - Utilizza useState per gestire lo stato locale:
-  - listaBandi contiene l'elenco dei bandi recuperati dall'API.
+  - noticesList contiene l'elenco dei bandi recuperati dall'API.
   - searchValue memorizza il valore della barra di ricerca.
 - useEffect viene utilizzato per eseguire una chiamata API ogni volta che searchValue cambia.
 - La funzione fetchBandi recupera i dati dall'endpoint "http://localhost:8080/Bandi" tramite axios.
@@ -15,28 +15,35 @@ Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'AP
 */
 
 export function Bandi() {
-  const[listaBandi, setListaBandi] = useState([])
-  const[searchValue,setSearchValue]= useState("")
+  const [noticesList, setnoticesList] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
-  useEffect(()=>{
-    const fetchBandi = async() =>{
-      const bandi = await axios.get("http://localhost:8080/Bandi")
-      setListaBandi(bandi.data)
-    }
-    fetchBandi()
-  },[searchValue])
-
+  useEffect(() => {
+    const fetchBandi = async () => {
+      const bandi = await axios.get("http://localhost:8080/Bandi");
+      setnoticesList(bandi.data);
+    };
+    fetchBandi();
+  }, [searchValue]);
 
   return (
     <div className="bandi">
-      <PageTitle title={"Bandi"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
+      <PageTitle
+        title={"Bandi"}
+        searchLabel={"Search:"}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
-
-      {listaBandi.map((bando, index) => (
-        <ContainerInfo key={index} title={bando.title} object={bando.object} description={bando.body} createdAt={bando.createdAt} />
+      {noticesList.map((bando, index) => (
+        <ContainerInfo
+          key={index}
+          title={bando.title}
+          object={bando.object}
+          description={bando.body}
+          createdAt={bando.createdAt}
+        />
       ))}
- 
     </div>
-
   );
 }
