@@ -11,3 +11,9 @@ npm install
 come descritto nella [[Installazione#Installazione|installazione]]. Questi file vengono automaticamente aggiornati quando si installa un nuovo pacchetto quindi non ce ne dobbiamo preoccupare.
 
 Abbiamo scelto di suddividere i file seguendo una logica molto semplice, il main contiene il metodo di esecuzione del progetto, in altre parole esegue **App.jsx**.
+
+## Librerie
+---
+### React
+### Axios
+
