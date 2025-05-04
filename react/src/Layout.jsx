@@ -25,8 +25,6 @@ export function Layout() {
   function handlePopupClick(){
     setPopupState(!popupState)
   }
-  
-
 
   return (
     <div className="container-pages">

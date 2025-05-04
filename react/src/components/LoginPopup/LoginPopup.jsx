@@ -1,5 +1,7 @@
+import { useState } from "react";
+import bcrypt, { genSalt } from "bcryptjs";
 import "./LoginPopup.css";
-
+import axios from "axios";
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Accetta una prop:
@@ -8,7 +10,10 @@ Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Lo stile del componente è gestito tramite il file CSS "LoginPopup.css".
 */
 
-export function LoginPopup({ handlePopupClick }) {
+export function LoginPopup({handlePopupClick }) {
+
+  const [username, setUsername] = useState('');
+  const [passwd, setPassword] = useState('');
   return (
     <div className="popup-background">
       <div className="login-background">
@@ -17,11 +22,19 @@ export function LoginPopup({ handlePopupClick }) {
           <button onClick={handlePopupClick}> X </button>
         </div>
         <label className="dark-text">Username:</label>
-        <input className="input-bar" name="username" />
+        <input className="input-bar" name="username"  value={username} onChange={(e) => setUsername(e.target.value)}/>
         <label className="dark-text">Password:</label>
-        <input className="input-bar" name="passwd" />
-        <button className="login-button" onClick={handlePopupClick}> Login</button>
+        <input className="input-bar" name="passwd" value={passwd} onChange={(e) => setPassword(e.target.value)}/>
+        <button className="login-button" onClick={ () => userAuthentication(username, passwd)}> Login</button>
       </div>
     </div>
   );
 }
+
+async function userAuthentication(username, passwd){
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(passwd, salt);
+  const response = await axios.post("http://localhost:8080/Authentication", { password: hash,  username:username} );
+
+}
+
