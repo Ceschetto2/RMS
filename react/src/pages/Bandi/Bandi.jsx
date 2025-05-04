@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Bandi.css";
-
+import axios from "axios";
 /* 
 Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'API.
 - Utilizza useState per gestire lo stato locale:

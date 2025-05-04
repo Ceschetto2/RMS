@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Regolamento.css";
-
+import axios from "axios";
 /* Il componente Regolamento gestisce e visualizza un elenco di regole recuperate da un'API.
 - Utilizza useState per gestire lo stato locale: 
   - ruleList contiene le regole recuperate dall'API.
