@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./LoginPopup.css";
 import axios from "axios";
+import {setToken} from "../../Hooks/Token/tokenState"
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Accetta una prop:
@@ -17,7 +18,7 @@ export function LoginPopup({handlePopupClick }) {
     <div className="popup-background">
       <div className="login-background">
         <div className="head-bar">
-          <text className="dark-text">Login e divertiti</text>
+          <text className="dark-text">Login e Divertiti</text>
           <button onClick={handlePopupClick}> X </button>
         </div>
         <label className="dark-text">Username:</label>
@@ -37,8 +38,12 @@ export function LoginPopup({handlePopupClick }) {
 //con un nuovo hash della password originale, quindi il confronto diviene impossibile
 async function userAuthentication(username, passwd, setAuthStatus){
   if((!username || !passwd) === false){
-  const response = await axios.post("http://localhost:8080/Authentication", { password: passwd,  username:username} );
-  setAuthStatus( response.data === "tutto ok"? true : false);
+    try{
+      setToken(await axios.post("http://localhost:8080/Authentication", { password: passwd,  username:username} ));
+    }catch(err)
+    {
+      console.log("Errore:\n"+err);
+    }
   }
 }
 

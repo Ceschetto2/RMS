@@ -21,7 +21,7 @@ export function Footer( {props}) {
           <h2 className="h2">Contatti </h2>
           <ul>
             <li className="text "> Email: info@esempio.com </li>
-            <li Telefono className="text">
+            <li className="text">
               Tel: +39 123 456 789
             </li>
           </ul>
@@ -29,7 +29,7 @@ export function Footer( {props}) {
         <div className="contatti-box">
           <h2 className="h2">Link utili</h2>
           <ul>
-            <li textAlign="left">
+            <li>
               <a href="/privacy" className="text ">
                 Privacy Policy
               </a>

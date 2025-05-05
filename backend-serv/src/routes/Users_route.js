@@ -3,6 +3,7 @@ const { Users } = require("../models");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
+const { tokenValidation } = require("../controllers/auth_controller/authController");
 
 
 const transporter = nodemailer.createTransport({
@@ -36,5 +37,11 @@ router.post("/addNewUser", async (req, res) => {
   });
   return res.json("Utente Inserito");
 });
+
+
+
+router.get("/getUserTest", tokenValidation, async(req,res)=>{
+    res.json(req.user);
+} )
 
 module.exports = router;
