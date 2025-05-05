@@ -36,9 +36,9 @@ exports.login = async (req, res) => {
 //Middleware per l'autenticazione (veriica la validità del token nell'header della richesta prima
 //dell'esecuzione del metodo)
 exports.tokenValidation = (req, res, next)=>{
-    //console.log(req.query['authorization']);
-    const token = req.query['authorization'];
-
+    //console.log(req.headers);
+    const token = req.headers['authorization'];
+    console.log(token);
     if(token === null) return res.status(401).json("Token non valido");
      jwt.verify(token,"chiave_segretissima", (err, user)=>
     {
