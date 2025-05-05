@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./LoginPopup.css";
 import axios from "axios";
-import {setToken} from "../../Hooks/Token/tokenState"
+import { setToken } from "../../Hooks/Token/tokenState";
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Accetta una prop:
@@ -10,10 +10,15 @@ Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Lo stile del componente è gestito tramite il file CSS "LoginPopup.css".
 */
 
-export function LoginPopup({handlePopupClick }) {
+export function LoginPopup({ handlePopupClick }) {
+  const [username, setUsername] = useState("");
+  const [passwd, setPassword] = useState("");
+  const [loginLabel, setLoginLabel] = useState("");
   const [authStatus, setAuthStatus] = useState(false);
-  const [username, setUsername] = useState('');
-  const [passwd, setPassword] = useState('');
+  useEffect(() => {
+    if (authStatus) handlePopupClick();
+  }, [authStatus]);
+
   return (
     <div className="popup-background">
       <div className="login-background">
@@ -22,12 +27,28 @@ export function LoginPopup({handlePopupClick }) {
           <button onClick={handlePopupClick}> X </button>
         </div>
         <label className="dark-text">Username:</label>
-        <input className="input-bar" name="username"  value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <input
+          className="input-bar"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <label className="dark-text">Password:</label>
-        <input className="input-bar" name="passwd" value={passwd} onChange={(e) => setPassword(e.target.value)}/>
-        <button className="login-button" onClick={ () => userAuthentication(username, passwd, setAuthStatus)}> Login</button>
-        {(authStatus === true)? <label className="dark-text">Login Effettuato</label>: <label className="dark-text">Username o Password errate</label>};
-
+        <input
+          className="input-bar"
+          name="passwd"
+          value={passwd}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          className="login-button"
+          onClick={() =>
+            userAuthentication(username, passwd, setLoginLabel, setAuthStatus)
+          }
+        >
+          Login
+        </button>
+        <label className="dark-text">{loginLabel}</label>;
       </div>
     </div>
   );
@@ -36,14 +57,25 @@ export function LoginPopup({handlePopupClick }) {
 //La password deve essere inviata in chiaro, criptata tramite il protocollo https perchè la
 //funzione di hashing è "one way", da un testo genera un unico hash che, con il salt con coincide
 //con un nuovo hash della password originale, quindi il confronto diviene impossibile
-async function userAuthentication(username, passwd, setAuthStatus){
-  if((!username || !passwd) === false){
-    try{
-      setToken(await axios.post("http://localhost:8080/Authentication", { password: passwd,  username:username} ));
-    }catch(err)
-    {
-      console.log("Errore:\n"+err);
+async function userAuthentication(
+  username,
+  passwd,
+  setLoginLabel,
+  setAuthStatus
+) {
+  if ((!username || !passwd) === false) {
+    try {
+      setToken(
+        await axios.post("http://localhost:8080/Authentication/login", {
+          password: passwd,
+          username: username,
+        })
+      );
+      setLoginLabel("Credenziali corrette, benvenuto campione");
+      setAuthStatus(true);
+    } catch (err) {
+      console.log("Errore: " + err);
+      setLoginLabel("Credenziali Errate");
     }
   }
 }
-

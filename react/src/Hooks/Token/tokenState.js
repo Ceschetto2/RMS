@@ -1,5 +1,5 @@
 
-let token = "";
+let token = null;
 
 export function getToken()
 {
@@ -12,5 +12,5 @@ export function setToken(tokenn)
 }
 export function deleteToken()
 {
-    token = "";
+    token = null;
 }
