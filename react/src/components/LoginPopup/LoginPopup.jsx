@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./LoginPopup.css";
 import axios from "axios";
-import { setToken } from "../../Hooks/Token/tokenState";
+import {setToken } from "../../Hooks/Token/tokenState";
+import { useNavigate } from "react-router-dom";
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Accetta una prop:
@@ -15,6 +16,7 @@ export function LoginPopup({ handlePopupClick }) {
   const [passwd, setPassword] = useState("");
   const [loginLabel, setLoginLabel] = useState("");
   const [authStatus, setAuthStatus] = useState(false);
+  let navigate = useNavigate();
   useEffect(() => {
     if (authStatus) handlePopupClick();
   }, [authStatus]);
@@ -43,7 +45,7 @@ export function LoginPopup({ handlePopupClick }) {
         <button
           className="login-button"
           onClick={() =>
-            userAuthentication(username, passwd, setLoginLabel, setAuthStatus)
+            userAuthentication(username, passwd, setLoginLabel, setAuthStatus, navigate)
           }
         >
           Login
@@ -61,8 +63,10 @@ async function userAuthentication(
   username,
   passwd,
   setLoginLabel,
-  setAuthStatus
+  setAuthStatus,
+  navigate
 ) {
+
   if ((!username || !passwd) === false) {
     try {
       setToken(
@@ -73,6 +77,8 @@ async function userAuthentication(
       );
       setLoginLabel("Credenziali corrette, benvenuto campione");
       setAuthStatus(true);
+      navigate("/dashboard")
+   
     } catch (err) {
       console.log("Errore: " + err);
       setLoginLabel("Credenziali Errate");

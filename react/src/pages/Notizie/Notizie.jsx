@@ -32,7 +32,7 @@ export function Notizie() {
       setnewsList(results.data)
     }
     fetchNotizie();
-    console.log(newsList)
+    //console.log(newsList)
   }, [searchValue])
   
 

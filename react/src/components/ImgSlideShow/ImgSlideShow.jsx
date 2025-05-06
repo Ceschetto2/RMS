@@ -18,7 +18,7 @@ export function ImgSlideShow({ img_array }) {
   const [fullScreenStatus, setFullScreenStatus] = useState(false);
 
   function getPrvIndex() {
-    return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;
+    return currentImgIndex === 0 ? img_array.length -1 : currentImgIndex - 1;
   }
   function getNextIndex() {
     return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;

@@ -1,16 +1,18 @@
 
-let token = null;
 
-export function getToken()
+let JWTtoken = null
+export function setToken(token)
 {
-    return token;
-}
-
-export function setToken(tokenn)
-{
-    token = tokenn.data;
+    //localStorage.setItem("jwt", token.data);
+    JWTtoken = token;
 }
 export function deleteToken()
 {
-    token = null;
+    //localStorage.removeItem("jwt");
+    JWTtoken = null;
+}
+export function getToken()
+{
+    //return localStorage.getItem("jwt");
+    return JWTtoken;
 }
