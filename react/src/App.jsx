@@ -38,7 +38,7 @@ function App() {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/regolamento" element={<Regolamento />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} /> 
         </Route>
       </Routes>
     </Router>
@@ -46,11 +46,11 @@ function App() {
 }
 
 //Funzione che permette di raggiungere delle rotte soltanto se si è in possesso di un token(non controlla la validità del token in se(da valutare)).
-//se si è in possesso di un token, la pagina può essere caricata, ma per ogni richiesta al backend protetta bisogna far validare il token
+//se si è in possesso di un token la pagina può essere caricata, ma per ogni richiesta al backend protetta bisogna far validare il token.
 
 function ProtectedRoute ({children}) {
   if (!getToken()){
-    return <Navigate to = "/"/>
+    return <Navigate to = "/" replace/>
   }
   console.log(getToken())
   return children;

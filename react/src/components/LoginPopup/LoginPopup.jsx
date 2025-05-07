@@ -16,7 +16,10 @@ export function LoginPopup({ handlePopupClick }) {
   const [passwd, setPassword] = useState("");
   const [loginLabel, setLoginLabel] = useState("");
   const [authStatus, setAuthStatus] = useState(false);
-  let navigate = useNavigate();
+  //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
+  let navigate = useNavigate(); 
+
+  //Questo hook ha l'effetto di chiudere il popup di login quando l'autenticazione va a buon fine.
   useEffect(() => {
     if (authStatus) handlePopupClick();
   }, [authStatus]);
@@ -57,7 +60,7 @@ export function LoginPopup({ handlePopupClick }) {
 }
 
 //La password deve essere inviata in chiaro, criptata tramite il protocollo https perchè la
-//funzione di hashing è "one way", da un testo genera un unico hash che, con il salt con coincide
+//funzione di hashing è "one way", da un testo genera un unico hash che, in aggiunta al salt, con coincide
 //con un nuovo hash della password originale, quindi il confronto diviene impossibile
 async function userAuthentication(
   username,
@@ -77,7 +80,7 @@ async function userAuthentication(
       );
       setLoginLabel("Credenziali corrette, benvenuto campione");
       setAuthStatus(true);
-      navigate("/dashboard")
+      navigate("/dashboard");
    
     } catch (err) {
       console.log("Errore: " + err);
