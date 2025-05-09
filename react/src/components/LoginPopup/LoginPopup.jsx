@@ -12,12 +12,22 @@ Il componente LoginPopup rappresenta un popup per il login degli utenti.
 */
 
 export function LoginPopup({ handlePopupClick }) {
-  const [username, setUsername] = useState("");
-  const [passwd, setPassword] = useState("");
+  const [user, setUser] = useState({username: "", passwd:""});
+    //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
+    let navigate = useNavigate(); 
+
+  const setUserCredential = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+  };
+  
+
+
   const [loginLabel, setLoginLabel] = useState("");
   const [authStatus, setAuthStatus] = useState(false);
-  //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
-  let navigate = useNavigate(); 
+
 
   //Questo hook ha l'effetto di chiudere il popup di login quando l'autenticazione va a buon fine.
   useEffect(() => {
@@ -35,20 +45,20 @@ export function LoginPopup({ handlePopupClick }) {
         <input
           className="input-bar"
           name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={user.username}
+          onChange={setUserCredential}
         />
         <label className="dark-text">Password:</label>
         <input
           className="input-bar"
           name="passwd"
-          value={passwd}
-          onChange={(e) => setPassword(e.target.value)}
+          value={user.passwd}
+          onChange={setUserCredential}
         />
         <button
           className="login-button"
           onClick={() =>
-            userAuthentication(username, passwd, setLoginLabel, setAuthStatus, navigate)
+            userAuthentication(user, setLoginLabel, setAuthStatus, navigate)
           }
         >
           Login
@@ -63,19 +73,17 @@ export function LoginPopup({ handlePopupClick }) {
 //funzione di hashing è "one way", da un testo genera un unico hash che, in aggiunta al salt, con coincide
 //con un nuovo hash della password originale, quindi il confronto diviene impossibile
 async function userAuthentication(
-  username,
-  passwd,
+  user,
   setLoginLabel,
   setAuthStatus,
   navigate
 ) {
-
-  if ((!username || !passwd) === false) {
+  if ((!user.username || !user.passwd) === false) {
     try {
       setToken(
         await axios.post("http://localhost:8080/Authentication/login", {
-          password: passwd,
-          username: username,
+          username: user.username,
+          password: user.passwd
         })
       );
       setLoginLabel("Credenziali corrette, benvenuto campione");
