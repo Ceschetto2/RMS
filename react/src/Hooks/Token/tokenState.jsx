@@ -1,3 +1,22 @@
+import { createContext, useState } from "react";
+
+
+export const authContext = createContext(null);
+
+export function AuthStatus({children}){
+    const [authStatus, setAuthStatus] = useState(false);
+    const [popupState, setPopupState] = useState(false)
+    function handlePopupClick(){
+      setPopupState(!popupState)
+    }
+    return(
+        <authContext.Provider value = {{authStatus,  setAuthStatus, popupState, handlePopupClick}}>
+            {children}
+        </authContext.Provider>
+    )
+}
+
+
 
 //Variabile per salvare il JWT token di autenticazione in locale usando una variabile react. Non sopravvive alla ricarica della pagina, ma è la implementazione più sicura
 let JWTtoken = null

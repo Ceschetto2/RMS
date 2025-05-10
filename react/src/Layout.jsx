@@ -4,7 +4,8 @@ import { Outlet } from "react-router-dom";
 import listaDev from "./Data/lista_sviluppatri.json"
 import "./Layout.css"
 import { LoginPopup } from "./components/LoginPopup/LoginPopup";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { authContext } from "./Hooks/Token/tokenState";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
 - Navbar: il componente che rappresenta la barra di navigazione dell'applicazione.
@@ -21,21 +22,19 @@ import { useState } from "react";
 */
 
 export function Layout() {
-  const [popupState, setPopupState] = useState(false)
-  function handlePopupClick(){
-    setPopupState(!popupState)
-  }
+  const {authStatus, setAuthStatus, popupState, handlePopupClick} = useContext(authContext)
+
 
   return (
-    <div className="container-pages">
-      <Navbar handlePopupClick ={handlePopupClick}/>
-      <div className="navbar-spacing">
-        
-      </div>
 
-      {popupState? <LoginPopup handlePopupClick= {handlePopupClick}/>: null}
+    <div className="container-pages">
+
+      <Navbar/>
+      <div className="navbar-spacing"/>
+
+      {popupState? <LoginPopup/>: null}
       <Outlet />
-   
+
 
       <Footer props = {listaDev}/>
     </div>

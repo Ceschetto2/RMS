@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./LoginPopup.css";
 import axios from "axios";
-import {setToken } from "../../Hooks/Token/tokenState";
+import {authContext, setToken } from "../../Hooks/Token/tokenState";
 import { useNavigate } from "react-router-dom";
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
@@ -11,7 +11,7 @@ Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Lo stile del componente è gestito tramite il file CSS "LoginPopup.css".
 */
 
-export function LoginPopup({ handlePopupClick }) {
+export function LoginPopup() {
   const [user, setUser] = useState({username: "", passwd:""});
     //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
     let navigate = useNavigate(); 
@@ -26,7 +26,7 @@ export function LoginPopup({ handlePopupClick }) {
 
 
   const [loginLabel, setLoginLabel] = useState("");
-  const [authStatus, setAuthStatus] = useState(false);
+  const {authStatus, setAuthStatus, popupState, handlePopupClick} = useContext(authContext)
 
 
   //Questo hook ha l'effetto di chiudere il popup di login quando l'autenticazione va a buon fine.

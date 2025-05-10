@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { authContext, deleteToken } from "../../Hooks/Token/tokenState";
 
 import "./Navbar.css";
-import { LoginPopup } from "../LoginPopup/LoginPopup";
 
 /* 
 Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
@@ -14,20 +13,26 @@ Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
 - Lo stile del componente è gestito tramite il file CSS "Navbar.css".
 */
 
-export function Navbar({handlePopupClick}) {
-
+export function Navbar() {
+  const { authStatus, setAuthStatus, popupState, handlePopupClick } =
+    useContext(authContext);
+  const navigate = useNavigate();
+  const logout = () => {
+    setAuthStatus(false);
+    deleteToken();
+    navigate("/");
+  };
   return (
     <div className="navbar">
-        <Link className="nav-link-image" to="/"> 
-        <img className="nav-image"  src="https://iili.io/3fDhbyb.png" alt="home">
+      <Link className="nav-link-image" to="/">
+        <img
+          className="nav-image"
+          src="https://iili.io/3fDhbyb.png"
+          alt="home"
+        ></img>
+      </Link>
 
-        </img>
-        </Link>
-  
-  
       <div className="nav-link-list">
-
-   
         <Link className="nav-link" to="/gallery">
           <button className="nav-button">Gallery</button>
         </Link>
@@ -46,12 +51,18 @@ export function Navbar({handlePopupClick}) {
         <Link className="nav-link" to="/FAQ">
           <button className="nav-button">FAQ</button>
         </Link>
-
-        
       </div>
 
-      <button className="nav-button" onClick={handlePopupClick}>Login</button>
- 
+      {authStatus ? (
+        <button className="nav-button" onClick={logout}>
+          Logout
+        </button>
+      ) : (
+        <button className="nav-button" onClick={handlePopupClick}>
+          Login
+        </button>
+      )}
+
     </div>
   );
 }
