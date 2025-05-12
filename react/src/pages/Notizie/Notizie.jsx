@@ -37,8 +37,10 @@ export function Notizie() {
   
 
   return (
+    
     <div className="notizie">
       <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
+    
 
       {newsList.length===0 ? <div>Nessun risultato trovato</div>:
       newsList.map((notizia, index) => (
@@ -47,6 +49,7 @@ export function Notizie() {
 
     
     </div>
+    
 
   );
 }

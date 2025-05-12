@@ -25,6 +25,7 @@ export function Navbar({handlePopupClick}) {
         </Link>
   
   
+  
       <div className="nav-link-list">
 
    

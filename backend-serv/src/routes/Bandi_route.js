@@ -18,7 +18,8 @@ router.get("/", async(req,res)=>{
 })
 
 router.post("/", async(req,res)=>{
-    await Notices.bulkCreate()
+    await Notices.bulkCreate(req.body);
+    res.json("Inserimento avvenuto");
 })
 
 module.exports = router;
