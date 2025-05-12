@@ -1,5 +1,5 @@
 ## Prerequisiti
-L'intero progetto e replicabile su qualsiasi dispositivo e con qualsiasi sistema operativo. Ogni software usato è gratuito in quanto si basa su librerie open-source, principalmente <a href = "https://react.dev/">react</a>.
+L'intero progetto e replicabile su qualsiasi dispositivo e con qualsiasi sistema operativo. Ogni software usato è gratuito in quanto si basa su librerie open-source, principalmente <a href = "https://react.dev/">react</a>. 
 
 React è una libreria di [javascript], un linguaggio interpretato nell'ambiente <a href="https://nodejs.org/en">NodeJS</a>.
 Quindi i prerequisiti per lo sviluppo di questo software sono:
@@ -19,7 +19,7 @@ git clone https://github.com/Ceschetto2/RMS
 ```
 
 
-2. Partiamo con l'**installazione del** [[front-end]]. Spostiamoci nella cartella react:
+2. Partiamo con l'**installazione del** [front-end](Front-end.md). Spostiamoci nella cartella react:
 
 ```bash
 
@@ -46,7 +46,7 @@ npm run dev
 Di default il programma si avvierà sulla porta 5173 in localhost: http://localhost:5173/
 Ogni qualvolta che si modifica un file e lo si salva, le modifiche vengono automaticamente aggiornate sul sito in localhost.
 
-Ora passiamo all'**installazione del back-end**. L'installazione inizia in modo analogo a quella del [[front-end]]: 
+Ora passiamo all'**installazione del back-end**. L'installazione inizia in modo analogo a quella del [front-end](Front-end.md): 
 
 1. Spostiamoci nella cartella del back-end (partendo dalla cartella root del progetto):
 
@@ -64,7 +64,7 @@ npm install
 
 ```
 
-Il [[back-end]] fa uso del database e per questo dobbiamo procedere con la creazione di quest'ultimo e e la configurazione della libreria che consente la connessione al database:
+Il [back-end](Back-end.md) fa uso del database e per questo dobbiamo procedere con la creazione di quest'ultimo e e la configurazione della libreria che consente la connessione al database:
 1. [[Database#Installazione Database|Installazione Database]]
 2. [[Back-end#Configurazione di Sequelize|Configurazione Back-end]]
 Ora ci resta da eseguire il back-end:

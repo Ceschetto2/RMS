@@ -1,6 +1,5 @@
 
 ## Installazione Database
----
 Per poter eseguire l'applicativo ci serve un database sul quale lavorare. Nello specifico un qualsiasi database che usi un dialetto di sql (mysql, mariadb, etc... Per comodità ho usato mysql negli esempi). Per creare il db possiamo procedere tamite comandi (terminale):
 ```shell
 mysql -u nomeutente -p
@@ -14,12 +13,10 @@ Una volta nella shell di sql, basta creare il database scegliendo un nome a piac
 ```sql
 CREATE DATABASE nomedatabase;
 ```
-E il gioco è fatto. Ora resta da [[Back-end#Configurazione di Sequelize|configurare il back-end]]
-
+E il gioco è fatto. Ora resta da [configurare il back-end](Back-end.md#configurazione-di-sequelize).
 
 ## Struttura del Database
----
-![[PartialDB.pdf]]
 
-Schema attuale del database. Le lettere delle tabelle sono in PascalCase, mentre il nome delle feature è in snake case, tranne i parametri generati in automatico come createdAt e updatedAt che sfruttano il camelCase. Notazioni di scrittura: ![[Pasted image 20250401125812.png]]
+![Database parziale](assets/PartialDB.png)
+Schema attuale del database. Le lettere delle tabelle sono in PascalCase, mentre il nome delle feature è in snake case, tranne i parametri generati in automatico come createdAt e updatedAt che sfruttano il camelCase. Notazioni di scrittura: ![Notazioni di scrittura del codice](assets/NotazioniDiScrittura.png)
 
