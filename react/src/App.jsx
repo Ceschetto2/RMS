@@ -16,6 +16,7 @@ import {
 import "./App.css";
 import { AuthStatus, getToken } from "./Hooks/Token/tokenState";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Attivita } from "./pages/Attivita/Attivita";
 
 /*
 Questa è l'interezza della nostra app. Sono contenute tutte le pagine presenti sotto forma di root.
@@ -47,6 +48,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+                        <Route
+              path="/attivita"
+              element={
+                <ProtectedRoute>
+                  <Attivita />
                 </ProtectedRoute>
               }
             />

@@ -1,0 +1,32 @@
+[
+    {
+        "cardIcon": "https://i.postimg.cc/qvpFPB8t/Icona-Attivit.png",
+        "cardTitle": "Attività",
+        "cardPage": "/attivita"
+    },
+    {
+        "cardIcon": "https://i.postimg.cc/RFWygPwX/Icona-Avvisi.png",
+        "cardTitle": "Avvisi",
+        "cardPage": "/avvisi"
+    },
+    {
+        "cardIcon": "https://i.postimg.cc/4Kp1rhfN/Icona-Gallery.png",
+        "cardTitle": "Gallery",
+        "cardPage": "/gallery"
+    },
+    {
+        "cardIcon": "https://i.postimg.cc/256K5H9r/Icona-Contatti.png",
+        "cardTitle": "Contatti",
+        "cardPage": "/contatti"
+    },
+    {
+        "cardIcon": "https://i.postimg.cc/sMQm4NbW/Storico-Gare.png",
+        "cardTitle": "Storico Allenamenti",
+        "cardPage": "/storico-allenamenti"
+    },
+    {
+        "cardIcon": "https://i.postimg.cc/sMQm4NbW/Storico-Gare.png",
+        "cardTitle": "Storico Gare",
+        "cardPage": "/storico-gare"
+    }
+]
