@@ -94,7 +94,12 @@ Non tutti i server web implementano questo metodo per le varie risorse.
 
 ### Sequelize
 <a href=https://sequelize.org/docs/v6/category/core-concepts>Sequelize</a> è vitale per il progetto, consente tutte le operazioni legate al [Database](Database.md) in quanto consente la creazione di tutte le tabelle necessarie, e tutte le operazioni **CRUD** legate alle query.
-Questa libreria consente di creare dei **modelli** che rappresentano le tabelle del nostro [Database](Database.md). I **Modelli** definiti sono delle classi con attributi le features della tabella e i metodi che consentono di fare operazioni sul db (query).
+Questa libreria consente di creare dei **modelli** che rappresentano le tabelle del nostro [Database](Database.md).
+
+ I **Modelli** definiti sono delle classi con attributi le features della tabella e i metodi che consentono di fare operazioni sul db (query):
+ ```
+
+ ```
 Il vantaggio di questa libreria è che una volta avvenuta la connessione al [Database](Database.md), in automatico creerà le tabelle o aggiornerà quelle esistenti senza doverlo fare a mano. Questo consente un rapido deploy. Inoltre l'uso dei modelli rende sicure le transazioni.
 
 #### Configurazione di Sequelize
@@ -196,7 +201,31 @@ Questa libreria ci consente di cryptare delle informazioni tramite una **funzion
 ```
 
 ### Nodemailer
-Libreria utilizzata per l'invio della [password generata randomicamente](#Generazione automatica di password)
+Libreria utilizzata per l'invio automatizzato delle mail. Per poter utilizzare questa libreria va prima configurata e istanziata:
+```js
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  service: "gmail", //< usiamo un servizio google
+  auth: {
+    user: "rms072296@gmail.com", //< mail con la quale inviare i messaggi
+    pass: "kcjm pisb jzqk oprp ", //< password del servizio google
+  },
+});
+```
+E poi possiamo utilizzarla per l'invio di mail:
+```js
+
+  const info = transporter.sendMail({
+    from: '"Associazione Vogatori Ostuni", <rms072296@gmail.com>',
+    to: userData.mail,
+    subject: "Test",
+    text: "Ciao questa è la tua password " + psswd,
+  });
+```
+Per ulteriori informazioni vedere la [guida](https://nodemailer.com/) sul sito.
 
 ### Json Web Token
+
+
 ### Cors
