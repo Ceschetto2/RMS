@@ -58,6 +58,9 @@ export function Navbar() {
         <Link className="nav-link" to="/FAQ">
           <button className="nav-button">FAQ</button>
         </Link>
+        {authStatus && <Link className="nav-link" to="/dashboard">
+          <button className="nav-button">Dashboard</button>
+        </Link>}
       </div>
 
       {authStatus ? (
