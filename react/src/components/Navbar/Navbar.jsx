@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { authContext, deleteToken, getToken } from "../../Hooks/Token/tokenState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Navbar.css";
 import { useEffect } from "react";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 /* 
 Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
@@ -18,16 +20,16 @@ export function Navbar() {
   const { authStatus, setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick } =
     useContext(authContext);
 
-    //Hook per aggiornare il valore dell'autsStatus in base alla presenza del token
-    //quando viene aggiornata la pagina.
-    useEffect(() => {
-      const token = getToken();
-      if (token) {
-        setAuthStatus(true);
-      } else {
-        setAuthStatus(false);
-      }
-    }, []);
+  //Hook per aggiornare il valore dell'autsStatus in base alla presenza del token
+  //quando viene aggiornata la pagina.
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      setAuthStatus(true);
+    } else {
+      setAuthStatus(false);
+    }
+  }, []);
 
   return (
     <div className="navbar">
@@ -64,13 +66,20 @@ export function Navbar() {
       </div>
 
       {authStatus ? (
-        <button className="nav-button" onClick={handleLogoutPopupButtonClick}>
-          Logout
-        </button>
+        <div className="nav-logout">
+          <button className="nav-button" >
+          <FontAwesomeIcon icon={faUser} className="icon" />
+          </button>
+          <button className="nav-button" onClick={handleLogoutPopupButtonClick}>
+            Logout
+          </button>
+        </div>
       ) : (
+
         <button className="nav-button" onClick={handleLoginPopupButtonClick}>
           Login
         </button>
+
       )}
 
     </div>
