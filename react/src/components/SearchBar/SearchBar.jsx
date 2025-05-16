@@ -16,38 +16,25 @@ Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un ca
 export function SearchBar({ label, searchValue, setSearchValue }) {
   const [showFilterPopup, setShowFilterPopup] = useState(false);
   const handleFilterClick = () => {
-  if (!showFilterPopup) setShowFilterPopup(true);
+    setShowFilterPopup(!showFilterPopup);
   }
-  const [searchDate, setSearchDate] = useState(new Date());
+  const [searchDate, setSearchDate] = useState("");
   const outsideClickRef = useRef(null);
-  const showFilterPopupButtonRef = useRef(null);
+
   const handleClickOutside = (event) => {
-    if (outsideClickRef.current &&  !outsideClickRef.current.contains(event.target)) {
+    if (outsideClickRef.current && !outsideClickRef.current.contains(event.target)) {
       setShowFilterPopup(false);
-
-
-
     }
-
-
   };
 
-  const handleButtonClick = (event) => {
-    if (showFilterPopupButtonRef.current && !showFilterPopupButtonRef.current.contains(event.target) ) {
-      console.log("Button clicked");
-      setShowFilterPopup(false);
-    }
-  }
   // Aggiunta e rimozione del listener
   useEffect(() => {
     // Aggiunge l'evento al montaggio
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('click', handleButtonClick);
 
     // Rimuove l'evento allo smontaggio
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('click', handleButtonClick);
     };
   }, []);
 
@@ -62,26 +49,28 @@ export function SearchBar({ label, searchValue, setSearchValue }) {
       <button className="search-button">
         <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
       </button>
-      <button ref={showFilterPopupButtonRef} className="filter-button" onClick={handleFilterClick}  disabled={showFilterPopup}>
-        <FontAwesomeIcon icon={faFilter} className="icon" />
-      </button>
-      {showFilterPopup && (
-        filteredSearchPopup(outsideClickRef, searchDate, setSearchDate)
-      )}
+      <div ref={outsideClickRef}>
+        <button className="filter-button" onClick={handleFilterClick} >
+          <FontAwesomeIcon icon={faFilter} className="icon" />
+        </button>
+        {showFilterPopup && (
+          filteredSearchPopup(searchDate, setSearchDate)
+        )}
+      </div>
     </div>
 
   );
 }
 
-function filteredSearchPopup(outsideClickRef, searchDate, setSearchDate) {
+function filteredSearchPopup(searchDate, setSearchDate) {
   return (
-    <div ref={outsideClickRef} className="filter-popup">
+    <div className="filter-popup">
       Ordine:
       <div className="order-buttons">
         <button className="order-button"><FontAwesomeIcon icon={faArrowUpShortWide} /></button>
         <button className="order-button"><FontAwesomeIcon icon={faArrowUpWideShort} /></button>
       </div>Data di Caricamento:
-      <input value={searchDate} type="Date" onChange={(e) => setSearchDate(e.target.value)} />
+      <input value={searchDate} type="date" onChange={(e) => setSearchDate(e.target.value)} />
       Regione:
       <select>
         <option value="toscana">Toscana</option>
@@ -89,8 +78,6 @@ function filteredSearchPopup(outsideClickRef, searchDate, setSearchDate) {
         <option value="liguria">Liguria</option>
         <option value="emilia-romagna">Emilia Romagna</option>
       </select>
-
-
     </div>
   )
 }
