@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { authContext, deleteToken } from "../../Hooks/Token/tokenState";
+import { authContext, deleteToken, getToken } from "../../Hooks/Token/tokenState";
 
 import "./Navbar.css";
+import { useEffect } from "react";
 
 /* 
 Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
@@ -14,14 +15,20 @@ Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
 */
 
 export function Navbar() {
-  const { authStatus, setAuthStatus, popupState, handlePopupClick } =
+  const { authStatus, setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick } =
     useContext(authContext);
-  const navigate = useNavigate();
-  const logout = () => {
-    setAuthStatus(false);
-    deleteToken();
-    navigate("/");
-  };
+
+    //Hook per aggiornare il valore dell'autsStatus in base alla presenza del token
+    //quando viene aggiornata la pagina.
+    useEffect(() => {
+      const token = getToken();
+      if (token) {
+        setAuthStatus(true);
+      } else {
+        setAuthStatus(false);
+      }
+    }, []);
+
   return (
     <div className="navbar">
       <Link className="nav-link-image" to="/">
@@ -54,11 +61,11 @@ export function Navbar() {
       </div>
 
       {authStatus ? (
-        <button className="nav-button" onClick={logout}>
+        <button className="nav-button" onClick={handleLogoutPopupButtonClick}>
           Logout
         </button>
       ) : (
-        <button className="nav-button" onClick={handlePopupClick}>
+        <button className="nav-button" onClick={handleLoginPopupButtonClick}>
           Login
         </button>
       )}

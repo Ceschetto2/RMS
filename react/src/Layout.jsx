@@ -1,11 +1,13 @@
 import { Footer} from "./components/Footer/Footer";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import listaDev from "./Data/lista_sviluppatri.json"
 import "./Layout.css"
 import { LoginPopup } from "./components/LoginPopup/LoginPopup";
-import { useContext, useState } from "react";
-import { authContext } from "./Hooks/Token/tokenState";
+import { useContext } from "react";
+import { authContext, deleteToken, getToken } from "./Hooks/Token/tokenState";
+import { LogoutConfirmation } from "./components/LogoutConfirmation/LogoutConfirmation";
+import { useEffect } from "react";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
 - Navbar: il componente che rappresenta la barra di navigazione dell'applicazione.
@@ -22,7 +24,17 @@ import { authContext } from "./Hooks/Token/tokenState";
 */
 
 export function Layout() {
-  const {authStatus, setAuthStatus, popupState, handlePopupClick} = useContext(authContext)
+  const{setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
+  let navigate = useNavigate();
+  //Funzione per gestire il click sul bottone di logout
+  const logout = () => {
+    
+    setAuthStatus(false);
+    deleteToken();
+    handleLogoutPopupButtonClick();
+    console.log("Logout effettuato");
+    navigate("/");
+  };
 
 
   return (
@@ -32,7 +44,9 @@ export function Layout() {
       <Navbar/>
       <div className="navbar-spacing"/>
 
-      {popupState? <LoginPopup/>: null}
+      {loginPopupState? <LoginPopup/>: null}
+      {logoutPopupState? <LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/>: null}
+      
       <Outlet />
 
 

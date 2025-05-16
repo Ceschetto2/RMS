@@ -17,6 +17,19 @@ import "./App.css";
 import { AuthStatus, getToken } from "./Hooks/Token/tokenState";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Attivita } from "./pages/Attivita/Attivita";
+import ReactDOM from 'react-dom'
+
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+
+library.add(fas)
+
+
+
+
 
 /*
 Questa è l'interezza della nostra app. Sono contenute tutte le pagine presenti sotto forma di root.
@@ -51,7 +64,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-                        <Route
+            <Route
               path="/attivita"
               element={
                 <ProtectedRoute>

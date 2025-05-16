@@ -1,9 +1,8 @@
-.home{
-    display:flex
-}
 
-.contenitore{
-    height: 200px;
-    width: 100px;
-    background-color: blanchedalmond;
+
+.iframe{
+    background: transparent;
+    background-color: transparent;
+    border-color: transparent;
+
 }

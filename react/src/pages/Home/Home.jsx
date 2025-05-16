@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ImgGallery } from "../../components/ImgGallery/ImgGallery";
 import { ImgSlideShow } from "../../components/ImgSlideShow/ImgSlideShow";
 import "./Home.css";
+import { faUpLong } from "@fortawesome/free-solid-svg-icons";
 
 /* 
 Il componente Home rappresenta la pagina principale dell'applicazione.
@@ -12,7 +14,6 @@ Il componente Home rappresenta la pagina principale dell'applicazione.
 export function Home() {
 
   return (
-    <>
-    </>
-  );
+    <></>
+  )
 }

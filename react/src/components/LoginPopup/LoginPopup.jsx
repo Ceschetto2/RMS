@@ -26,12 +26,12 @@ export function LoginPopup() {
 
 
   const [loginLabel, setLoginLabel] = useState("");
-  const {authStatus, setAuthStatus, popupState, handlePopupClick} = useContext(authContext)
+  const {authStatus,  setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
 
 
   //Questo hook ha l'effetto di chiudere il popup di login quando l'autenticazione va a buon fine.
   useEffect(() => {
-    if (authStatus) handlePopupClick();
+    if (authStatus) handleLoginPopupButtonClick();
   }, [authStatus]);
 
   return (
@@ -39,7 +39,7 @@ export function LoginPopup() {
       <div className="login-background">
         <div className="head-bar">
           <text className="dark-text">Login e Divertiti</text>
-          <button onClick={handlePopupClick}> X </button>
+          <button onClick={handleLoginPopupButtonClick}> X </button>
         </div>
         <label className="dark-text">Username:</label>
         <input
