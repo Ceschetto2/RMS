@@ -1,6 +1,6 @@
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpShortWide, faArrowUpWideShort, faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDownWideShort, faArrowUpShortWide, faArrowUpWideShort, faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 /* 
 Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un campo di input e un pulsante.
@@ -13,17 +13,31 @@ Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un ca
 - Lo stile del componente è gestito tramite il file CSS "SearchBar.css".
 */
 
-export function SearchBar({ label, searchValue, setSearchValue }) {
-  const [showFilterPopup, setShowFilterPopup] = useState(false);
-  const handleFilterClick = () => {
-    setShowFilterPopup(!showFilterPopup);
+export function SearchBar({ label, searchData, setSearchData }) {
+
+  const setSearchValue = e => {
+    console.log(e)
+    setSearchData({
+      ...searchData,
+      [e.target.name]: e.target.value
+    });
   }
-  const [searchDate, setSearchDate] = useState("");
+
+
+  // Stato per gestire l'apertura e la chiusura del popup di filtro
+  const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+
+  // Funzione per gestire il click sul pulsante di filtro
+  const handleFilterClick = () => {
+    setIsFilterPopupOpen(!isFilterPopupOpen);
+  }
+
+
   const outsideClickRef = useRef(null);
 
   const handleClickOutside = (event) => {
     if (outsideClickRef.current && !outsideClickRef.current.contains(event.target)) {
-      setShowFilterPopup(false);
+      setIsFilterPopupOpen(false);
     }
   };
 
@@ -38,12 +52,15 @@ export function SearchBar({ label, searchValue, setSearchValue }) {
     };
   }, []);
 
+
+
+
   return (
 
     <div className="search-container">
       <label className="label">{label}</label>
-      <input className="search-bar" name="search-query" value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+      <input className="search-bar" name="text" value={searchData.text} type="text" placeholder="Search..."
+        onChange={setSearchValue}
       />
 
       <button className="search-button">
@@ -53,8 +70,22 @@ export function SearchBar({ label, searchValue, setSearchValue }) {
         <button className="filter-button" onClick={handleFilterClick} >
           <FontAwesomeIcon icon={faFilter} className="icon" />
         </button>
-        {showFilterPopup && (
-          filteredSearchPopup(searchDate, setSearchDate)
+        {isFilterPopupOpen && (
+          <div className="filter-popup">
+            Ordine:
+            <div className="order-buttons">
+              {searchData.isOrdGrow ? "Crescente" : "Decrescente"}
+              <button className="order-button" name="isOrdGrow" onClick={() => setSearchData({ ...searchData, isOrdGrow: !searchData.isOrdGrow })}><FontAwesomeIcon icon={searchData.isOrdGrow ? faArrowUpWideShort : faArrowDownWideShort} /></button>
+            </div>Data di Caricamento:
+            <input value={searchData.date} name="date" type="date" onChange={setSearchValue} />
+            Regione:
+            <select>
+              <option value="toscana">Toscana</option>
+              <option value="lazio">Lazio</option>
+              <option value="liguria">Liguria</option>
+              <option value="emilia-romagna">Emilia Romagna</option>
+            </select>
+          </div>
         )}
       </div>
     </div>
@@ -62,22 +93,3 @@ export function SearchBar({ label, searchValue, setSearchValue }) {
   );
 }
 
-function filteredSearchPopup(searchDate, setSearchDate) {
-  return (
-    <div className="filter-popup">
-      Ordine:
-      <div className="order-buttons">
-        <button className="order-button"><FontAwesomeIcon icon={faArrowUpShortWide} /></button>
-        <button className="order-button"><FontAwesomeIcon icon={faArrowUpWideShort} /></button>
-      </div>Data di Caricamento:
-      <input value={searchDate} type="date" onChange={(e) => setSearchDate(e.target.value)} />
-      Regione:
-      <select>
-        <option value="toscana">Toscana</option>
-        <option value="lazio">Lazio</option>
-        <option value="liguria">Liguria</option>
-        <option value="emilia-romagna">Emilia Romagna</option>
-      </select>
-    </div>
-  )
-}

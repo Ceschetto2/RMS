@@ -18,7 +18,8 @@ Il componente FAQ gestisce e visualizza un elenco di domande frequenti (FAQ) rec
 
 export function FAQ() {
 
-  const [searchValue, setSearchValue] = useState("");
+  const [searchData, setSearchData] = useState({text: "", date: "", isOrdGrow: true});
+
   const [FaqList, setFaqList] = useState([]);
   useEffect(() => {
     const fetchFaq = async () => {
@@ -31,15 +32,15 @@ export function FAQ() {
     };
     fetchFaq();
 
-  }, [searchValue]);
+  }, [searchData.text]);
 
   return (
     <div className="faq-container">
       <PageTitle
         title={"FAQ"}
         searchLabel={"Search:"}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        searchData={searchData}
+        setSearchData={setSearchData}
       />
 
       {FaqList.map((domanda, index)=>(<DropDownInfo key={index} answare={domanda.answare} question={domanda.question} />))}

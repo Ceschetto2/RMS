@@ -26,28 +26,32 @@ per lo slideshow
 */
 
 export function Gallery() {
-  const [SearchValue, setSearchValue] = useState("");
+  const [searchData, setSearchData] = useState({text: "", date: "", isOrdGrow: true});
+
+
   const [img_show, setImgShow] = useState(0);
   let [img_array, setImgArray] = useState([]);
   useEffect(() => {
     const fetchImages = async () => {
       const response = await axios.get("http://localhost:8080/GalleryImages", {
-        params: { data: SearchValue },
+        params: { data: searchData.text },
       });
       
       setImgArray(response.data);
     };
 
+    
+
     fetchImages();
-  }, [SearchValue]); //la funzione di quary si richiama ogni qualvolta SearchValue viene modificato
+  }, [searchData]); //la funzione di quary si richiama ogni qualvolta SearchValue viene modificato
 
   return (
     <div className="page-background">
       <PageTitle
         title="Gallery"
         searchLabel="Search:"
-        searchValue={SearchValue}
-        setSearchValue={setSearchValue}
+        searchData={searchData}
+        setSearchData={setSearchData}
       />
       {img_array.length === 0 ? (
         <div className="Error">There are no elements</div>

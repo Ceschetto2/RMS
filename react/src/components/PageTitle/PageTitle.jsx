@@ -1,6 +1,6 @@
 import { SearchBar } from "../SearchBar/SearchBar";
 import "./PageTitle.css";
-export function PageTitle({ title,searchLabel, searchValue, setSearchValue }) {
+export function PageTitle({ title,searchLabel, searchData, setSearchData }) {
 
 /* 
 Il componente PageTitle rappresenta un'intestazione di pagina con un titolo e una barra di ricerca.
@@ -21,7 +21,7 @@ sia per il bottone di ricerca.
   return (
     <div className="container-page-title">
       <text className="titolo">{title}</text>
-      <SearchBar searchLabel= {searchLabel} searchValue = {searchValue} setSearchValue={setSearchValue} />
+      <SearchBar searchLabel= {searchLabel} searchData = {searchData} setSearchData={setSearchData} />
     </div>
   );
 }

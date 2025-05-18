@@ -16,7 +16,7 @@ Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'AP
 
 export function Bandi() {
   const [noticesList, setnoticesList] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchData, setSearchData] = useState({text: "", date: "", isOrdGrow: true});
 
   useEffect(() => {
     const fetchBandi = async () => {
@@ -24,15 +24,15 @@ export function Bandi() {
       setnoticesList(bandi.data);
     };
     fetchBandi();
-  }, [searchValue]);
+  }, [searchData.text]);
 
   return (
     <div className="bandi">
       <PageTitle
         title={"Bandi"}
         searchLabel={"Search:"}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        searchData={searchData}
+        setSearchData={setSearchData}
       />
 
       {noticesList.map((bando, index) => (
