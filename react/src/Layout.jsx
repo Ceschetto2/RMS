@@ -5,9 +5,10 @@ import listaDev from "./Data/lista_sviluppatri.json"
 import "./Layout.css"
 import { LoginPopup } from "./components/LoginPopup/LoginPopup";
 import { useContext } from "react";
-import { authContext, deleteToken, getToken } from "./Hooks/Token/tokenState";
+import { authContext, deleteToken } from "./Hooks/Token/tokenState";
 import { LogoutConfirmation } from "./components/LogoutConfirmation/LogoutConfirmation";
-import PersonalAreaContext from "./Hooks/PersonalArea/PersonalAreaContext";
+import { personalAreaContext } from "./Hooks/PersonalArea/PersonalAreaContext";
+import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
 - Navbar: il componente che rappresenta la barra di navigazione dell'applicazione.
@@ -24,9 +25,9 @@ import PersonalAreaContext from "./Hooks/PersonalArea/PersonalAreaContext";
 */
 
 export function Layout() {
-  const{setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
+  const{setAuthStatus, loginPopupState, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
   let navigate = useNavigate();
-
+  const { personalAreaState, setPersonalAreaState } = useContext(personalAreaContext);
   
   //Funzione per gestire il click sul bottone di logout
   const logout = () => {
@@ -47,8 +48,8 @@ export function Layout() {
       <div className="navbar-spacing"/>
 
       {loginPopupState? <LoginPopup/>: null}
-      {logoutPopupState? <PersonalAreaContext><LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/></PersonalAreaContext>: null}
-      
+      {logoutPopupState? <LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/>: null}
+      {personalAreaState? <PersonalArea/>: null}
       <Outlet />
 
 

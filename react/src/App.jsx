@@ -23,6 +23,7 @@ import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import PersonalAreaContext from "./Hooks/PersonalArea/PersonalAreaContext";
 
 
 library.add(fas)
@@ -49,7 +50,7 @@ function App() {
     <AuthStatus>
       <Router>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<PersonalAreaContext><Layout /></PersonalAreaContext>}>
             <Route path="/" element={<Home />} />
             <Route path="/notizie" element={<Notizie />} />
             <Route path="/bandi" element={<Bandi />} />

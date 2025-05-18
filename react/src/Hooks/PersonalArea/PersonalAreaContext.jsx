@@ -20,4 +20,5 @@ export default function PersonalAreaContext({ children }) {
       {children}
     </personalAreaContext.Provider>
   );
+
 }
