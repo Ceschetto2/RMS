@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navbar.css";
 import { useEffect } from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { personalAreaContext } from "../../Hooks/PersonalArea/PersonalAreaContext";
+import { PersonalAreaContext } from "../../Hooks/PersonalArea/PersonalAreaProvider";
 
 /* 
 Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
@@ -20,7 +20,7 @@ Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
 export function Navbar() {
   const { authStatus, setAuthStatus, handleLoginPopupButtonClick, handleLogoutPopupButtonClick } =
     useContext(authContext);
-  const {personalAreaState ,setPersonalAreaState} = useContext(personalAreaContext);
+  const {isPersonalAreaOpen, setIsPersonalAreaOpen} = useContext(PersonalAreaContext);
 
   //Hook per aggiornare il valore dell'autsStatus in base alla presenza del token
   //quando viene aggiornata la pagina.
@@ -69,7 +69,7 @@ export function Navbar() {
 
       {authStatus ? (
         <div className="nav-logout">
-          <button className="nav-button" onClick={()=>setPersonalAreaState(!personalAreaState)} >
+          <button className="nav-button" onClick={()=>setIsPersonalAreaOpen(!isPersonalAreaOpen)} >
           <FontAwesomeIcon icon={faUser} className="icon" />
           </button>
           <button className="nav-button" onClick={handleLogoutPopupButtonClick}>

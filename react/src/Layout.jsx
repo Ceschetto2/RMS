@@ -7,7 +7,7 @@ import { LoginPopup } from "./components/LoginPopup/LoginPopup";
 import { useContext } from "react";
 import { authContext, deleteToken } from "./Hooks/Token/tokenState";
 import { LogoutConfirmation } from "./components/LogoutConfirmation/LogoutConfirmation";
-import { personalAreaContext } from "./Hooks/PersonalArea/PersonalAreaContext";
+import { PersonalAreaContext } from "./Hooks/PersonalArea/PersonalAreaProvider";
 import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
@@ -27,7 +27,7 @@ import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 export function Layout() {
   const{setAuthStatus, loginPopupState, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
   let navigate = useNavigate();
-  const { personalAreaState, setPersonalAreaState } = useContext(personalAreaContext);
+  const { isPersonalAreaOpen } = useContext(PersonalAreaContext);
   
   //Funzione per gestire il click sul bottone di logout
   const logout = () => {
@@ -49,7 +49,7 @@ export function Layout() {
 
       {loginPopupState? <LoginPopup/>: null}
       {logoutPopupState? <LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/>: null}
-      {personalAreaState? <PersonalArea/>: null}
+      {isPersonalAreaOpen? <PersonalArea/>: null}
       <Outlet />
 
 

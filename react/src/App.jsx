@@ -13,17 +13,18 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+
 import "./App.css";
 import { AuthStatus, getToken } from "./Hooks/Token/tokenState";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Attivita } from "./pages/Attivita/Attivita";
-import ReactDOM from 'react-dom'
-
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import PersonalAreaContext from "./Hooks/PersonalArea/PersonalAreaContext";
+
+
+import PersonalAreaProvider from "./Hooks/PersonalArea/PersonalAreaProvider";
 
 
 library.add(fas)
@@ -50,7 +51,7 @@ function App() {
     <AuthStatus>
       <Router>
         <Routes>
-          <Route element={<PersonalAreaContext><Layout /></PersonalAreaContext>}>
+          <Route element={<PersonalAreaProvider><Layout /></PersonalAreaProvider>}>
             <Route path="/" element={<Home />} />
             <Route path="/notizie" element={<Notizie />} />
             <Route path="/bandi" element={<Bandi />} />

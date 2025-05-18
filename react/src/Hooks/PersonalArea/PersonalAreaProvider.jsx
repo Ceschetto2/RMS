@@ -2,23 +2,23 @@
 import { createContext, useState } from "react";
 
 
-export const personalAreaContext = createContext();
+export const PersonalAreaContext = createContext();
 /**
  * Il componente PersonalAreaContext fornisce un contesto per gestire lo stato dell'area personale.
  * Utilizza il Context API di React per condividere lo stato tra i componenti figli.
  **/
-export default function PersonalAreaContext({ children }) {
-  const [personalAreaState, setPersonalAreaState] = useState(false);
+export default function PersonalAreaProvider({ children }) {
+  const [isPersonalAreaOpen, setIsPersonalAreaOpen] = useState(false);
 
   return (
-    <personalAreaContext.Provider
+    <PersonalAreaContext.Provider
       value={{
-        personalAreaState,
-        setPersonalAreaState,
+        isPersonalAreaOpen,
+        setIsPersonalAreaOpen
       }}
     >
       {children}
-    </personalAreaContext.Provider>
+    </PersonalAreaContext.Provider>
   );
 
 }
