@@ -24,6 +24,11 @@ import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 - handlePopupClick: la funzione che gestisce il click sul popup di login dell'applicazione.
 */
 
+/**
+ * Componente principale di layout dell'applicazione.
+ * Visualizza la Navbar, il Footer e gestisce la visualizzazione dei popup come login, conferma logout
+ * e area personale. Utilizza l'Outlet di React Router per il rendering delle route figlie.
+ */
 export function Layout() {
   const{setAuthStatus, loginPopupState, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
   let navigate = useNavigate();

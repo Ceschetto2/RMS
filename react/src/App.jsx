@@ -46,6 +46,18 @@ Questi ci consentono di localizzare e navigare fra le varie pagine presenti. Le 
 e chiamate in base alla path specificata.
 */
 
+/**
+ * Componente principale dell'applicazione che configura il routing e i provider di contesto.
+ *
+ * - Avvolge l'app con `AuthStatus` per gestire lo stato di autenticazione.
+ * - Utilizza `Router` e `Routes` di React Router per la navigazione client-side.
+ * - Fornisce il contesto `PersonalAreaProvider` al `Layout` e alle sue route annidate.
+ * - Definisce le route pubbliche per Home, Notizie, Bandi, FAQ, Regolamento e Gallery.
+ * - Protegge le route `/dashboard` e `/attivita` tramite il componente `ProtectedRoute`,
+ *   assicurando che solo gli utenti autenticati possano accedervi.
+ *
+ * @component
+ */
 function App() {
   return (
     <AuthStatus>
@@ -84,11 +96,18 @@ function App() {
 //Funzione che permette di raggiungere delle rotte soltanto se si è in possesso di un token(non controlla la validità del token in se(da valutare)).
 //se si è in possesso di un token la pagina può essere caricata, ma per ogni richiesta al backend protetta bisogna far validare il token.
 
+/**
+ * Componente protetta che consente l'accesso solo agli utenti autenticati.
+ * Se il token di autenticazione non è presente, reindirizza alla home page.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - I componenti figli da renderizzare se autenticato.
+ * @returns {React.ReactNode} I figli se autenticato, altrimenti un redirect.
+ */
 function ProtectedRoute({ children }) {
   if (!getToken()) {
     return <Navigate to="/" replace />;
   }
-  console.log(getToken());
   return children;
 }
 

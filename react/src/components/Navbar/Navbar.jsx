@@ -8,15 +8,17 @@ import { useEffect } from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { PersonalAreaContext } from "../../Hooks/PersonalArea/PersonalAreaProvider";
 
-/* 
-Il componente Navbar rappresenta la barra di navigazione dell'applicazione.
-- Include collegamenti (Link) a diverse sezioni dell'applicazione, come Home, Gallery, Notizie, Bandi, Regolamento e FAQ.
-- Ogni collegamento è rappresentato da un pulsante con uno stile personalizzato.
-- Contiene un'immagine cliccabile che funge da collegamento alla homepage.
-- Include un pulsante "Login" che attiva una funzione passata come prop (handlePopupClick), probabilmente per aprire un popup di login.
-- Lo stile del componente è gestito tramite il file CSS "Navbar.css".
-*/
-
+/**
+ * Componente Navbar che visualizza la barra di navigazione principale dell'applicazione.
+ *
+ * - Mostra i link di navigazione verso varie pagine (Gallery, Notizie, Bandi, Regolamento, FAQ, Dashboard).
+ * - Visualizza i pulsanti di login/logout in base allo stato di autenticazione.
+ * - Fornisce l'accesso all'area personale quando l'utente è autenticato.
+ * - Aggiorna lo stato di autenticazione al rendering in base alla presenza del token.
+ *
+ * @component
+ * @returns {JSX.Element} Il componente Navbar renderizzato.
+ */
 export function Navbar() {
   const { authStatus, setAuthStatus, handleLoginPopupButtonClick, handleLogoutPopupButtonClick } =
     useContext(authContext);

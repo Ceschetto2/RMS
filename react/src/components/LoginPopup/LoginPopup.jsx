@@ -70,7 +70,7 @@ export function LoginPopup() {
 }
 
 //La password deve essere inviata in chiaro, criptata tramite il protocollo https perchè la
-//funzione di hashing è "one way", da un testo genera un unico hash che, in aggiunta al salt, con coincide
+//funzione di hashing è "one way", da un testo genera un unico hash che, in aggiunta al salt, non coincide
 //con un nuovo hash della password originale, quindi il confronto diviene impossibile
 async function userAuthentication(
   user,
