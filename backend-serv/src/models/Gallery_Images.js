@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
         },
         informations:{
-            type:DataTypes.STRING(255),
+            type:DataTypes.JSON,
             allowNull:true,
 
         },

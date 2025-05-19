@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
 import "./Bandi.css";
-
+import axios from "axios";
 /* 
 Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'API.
 - Utilizza useState per gestire lo stato locale:
@@ -16,7 +16,7 @@ Il componente Bandi gestisce e visualizza un elenco di bandi recuperati da un'AP
 
 export function Bandi() {
   const [noticesList, setnoticesList] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchData, setSearchData] = useState({text: "", date: "", isOrdGrow: true});
 
   useEffect(() => {
     const fetchBandi = async () => {
@@ -24,7 +24,7 @@ export function Bandi() {
       setnoticesList(bandi.data);
     };
     fetchBandi();
-  }, [searchValue]);
+  }, [searchData.text]);
 
   return (
     <section id="sezione_bandi">
@@ -32,8 +32,8 @@ export function Bandi() {
       <PageTitle
         title={"Bandi"}
         searchLabel={"Search:"}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
+        searchData={searchData}
+        setSearchData={setSearchData}
       />
 
       {noticesList.map((bando, index) => (

@@ -13,13 +13,13 @@ const { Notices } = require("../models")
 const router  = express.Router()
 
 router.get("/", async(req,res)=>{
-    const response = await Notices.findAll()
-    res.json(response)
+    const response = await Notices.findAll();
+    res.json(response);
 })
 
 router.post("/", async(req,res)=>{
     await Notices.bulkCreate(req.body);
-    res.json("Inserimento avvenuto");
+    res.json("Inserimento avvenuto con successo");
 })
 
 module.exports = router;

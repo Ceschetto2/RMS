@@ -1,10 +1,14 @@
 import { Footer} from "./components/Footer/Footer";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import listaDev from "./Data/lista_sviluppatri.json"
 import "./Layout.css"
 import { LoginPopup } from "./components/LoginPopup/LoginPopup";
-import { useState } from "react";
+import { useContext } from "react";
+import { authContext, deleteToken } from "./Hooks/Token/tokenState";
+import { LogoutConfirmation } from "./components/LogoutConfirmation/LogoutConfirmation";
+import { PersonalAreaContext } from "./Hooks/PersonalArea/PersonalAreaProvider";
+import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
 - Navbar: il componente che rappresenta la barra di navigazione dell'applicazione.
@@ -20,24 +24,39 @@ import { useState } from "react";
 - handlePopupClick: la funzione che gestisce il click sul popup di login dell'applicazione.
 */
 
+/**
+ * Componente principale di layout dell'applicazione.
+ * Visualizza la Navbar, il Footer e gestisce la visualizzazione dei popup come login, conferma logout
+ * e area personale. Utilizza l'Outlet di React Router per il rendering delle route figlie.
+ */
 export function Layout() {
-  const [popupState, setPopupState] = useState(false)
-  function handlePopupClick(){
-    setPopupState(!popupState)
-  }
+  const{setAuthStatus, loginPopupState, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
+  let navigate = useNavigate();
+  const { isPersonalAreaOpen } = useContext(PersonalAreaContext);
   
+  //Funzione per gestire il click sul bottone di logout
+  const logout = () => {
+    
+    setAuthStatus(false);
+    deleteToken();
+    handleLogoutPopupButtonClick();
+    console.log("Logout effettuato");
+    navigate("/");
+  };
 
 
   return (
-    <div className="container-pages">
-      <Navbar handlePopupClick ={handlePopupClick}/>
-      <div className="navbar-spacing">
-        
-      </div>
 
-      {popupState? <LoginPopup handlePopupClick= {handlePopupClick}/>: null}
+    <div className="container-pages">
+
+      <Navbar/>
+      <div className="navbar-spacing"/>
+
+      {loginPopupState? <LoginPopup/>: null}
+      {logoutPopupState? <LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/>: null}
+      {isPersonalAreaOpen? <PersonalArea/>: null}
       <Outlet />
-   
+
 
       <Footer props = {listaDev}/>
     </div>

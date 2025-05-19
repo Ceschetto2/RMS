@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
 import { PageTitle } from "../../components/PageTitle/PageTitle";
@@ -8,6 +9,7 @@ import angle_top from "../../Assets/angle_top.png";
 import Intro from "../../Assets/Intro.webm";
 import enter from "../../Assets/enter.png";
 import "./Home.css";
+import { faUpLong } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
