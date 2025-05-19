@@ -37,7 +37,7 @@ export function Notizie() {
   
 
   return (
-    
+    <section id="sezione_notizie">
     <div className="notizie">
       <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
     
@@ -49,7 +49,7 @@ export function Notizie() {
 
     
     </div>
-    
+    </section>
 
   );
 }

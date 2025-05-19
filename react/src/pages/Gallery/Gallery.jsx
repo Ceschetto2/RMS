@@ -42,6 +42,7 @@ export function Gallery() {
   }, [SearchValue]); //la funzione di quary si richiama ogni qualvolta SearchValue viene modificato
 
   return (
+    <section id="sezione_gallery">
     <div className="page-background">
       <PageTitle
         title="Gallery"
@@ -64,6 +65,8 @@ export function Gallery() {
           )}
         </>
       )}
+      
     </div>
+   </section>
   );
 }

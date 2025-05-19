@@ -27,6 +27,7 @@ export function Bandi() {
   }, [searchValue]);
 
   return (
+    <section id="sezione_bandi">
     <div className="bandi">
       <PageTitle
         title={"Bandi"}
@@ -44,6 +45,8 @@ export function Bandi() {
           createdAt={bando.createdAt}
         />
       ))}
-    </div>
+      </div>
+      </section>
+    
   );
 }
