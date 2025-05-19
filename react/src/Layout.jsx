@@ -7,8 +7,6 @@ import { LoginPopup } from "./components/LoginPopup/LoginPopup";
 import { useContext } from "react";
 import { authContext, deleteToken } from "./Hooks/Token/tokenState";
 import { LogoutConfirmation } from "./components/LogoutConfirmation/LogoutConfirmation";
-import { PersonalAreaContext } from "./Hooks/PersonalArea/PersonalAreaProvider";
-import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 
 /* Il file Layout.jsx rappresenta il layout principale dell'applicazione. All'interno del codice troviamo:
 - Navbar: il componente che rappresenta la barra di navigazione dell'applicazione.
@@ -32,7 +30,6 @@ import { PersonalArea } from "./components/PersonalArea/PersonalArea";
 export function Layout() {
   const{setAuthStatus, loginPopupState, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
   let navigate = useNavigate();
-  const { isPersonalAreaOpen } = useContext(PersonalAreaContext);
   
   //Funzione per gestire il click sul bottone di logout
   const logout = () => {
@@ -54,7 +51,6 @@ export function Layout() {
 
       {loginPopupState? <LoginPopup/>: null}
       {logoutPopupState? <LogoutConfirmation onCancel={handleLogoutPopupButtonClick} onConfirm={logout}/>: null}
-      {isPersonalAreaOpen? <PersonalArea/>: null}
       <Outlet />
 
 

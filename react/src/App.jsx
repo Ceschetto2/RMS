@@ -4,6 +4,8 @@ import { Bandi } from "./pages/Bandi/Bandi";
 import { FAQ } from "./pages/FAQ/FAQ";
 import { Regolamento } from "./pages/Regolamento/Regolamento";
 import { Gallery } from "./pages/Gallery/Gallery";
+import PersonalArea from "./pages/PersonalArea/PersonalArea";
+
 
 import { Layout } from "./Layout";
 
@@ -22,10 +24,6 @@ import { Attivita } from "./pages/Attivita/Attivita";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
-
-import PersonalAreaProvider from "./Hooks/PersonalArea/PersonalAreaProvider";
-
 
 library.add(fas)
 
@@ -63,7 +61,7 @@ function App() {
     <AuthStatus>
       <Router>
         <Routes>
-          <Route element={<PersonalAreaProvider><Layout /></PersonalAreaProvider>}>
+          <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/notizie" element={<Notizie />} />
             <Route path="/bandi" element={<Bandi />} />
@@ -86,6 +84,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/personalarea" element={<ProtectedRoute><PersonalArea/></ProtectedRoute>}/>
           </Route>
         </Routes>
       </Router>
