@@ -18,27 +18,29 @@ Il componente Notizie gestisce e visualizza un elenco di notizie recuperate da u
 
 export function Notizie() {
 
-  const[searchValue, setSearchValue] = useState("")
+  const [searchData, setSearchData] = useState({text: "", date: "", isOrdGrow: true});
+
   const[newsList, setnewsList] = useState([])
  
   useEffect(()=>{
     const fetchNotizie = async() =>{
       const results = await axios.get("http://localhost:8080/Notizie",
         {
-          params:{data: searchValue},
+          params:{data: searchData.text},
         }
       )
 
       setnewsList(results.data)
     }
     fetchNotizie();
-    console.log(newsList)
-  }, [searchValue])
+    //console.log(newsList)
+  }, [searchData.text])
   
 
   return (
+    <section id="sezione_notizie">
     <div className="notizie">
-      <PageTitle title={"Notizie"} searchLabel={"Search:"} searchValue={searchValue} setSearchValue={setSearchValue} />
+      <PageTitle title={"Notizie"} searchLabel={"Search:"} searchData={searchData} setSearchData={setSearchData} />
 
       {newsList.length===0 ? <div>Nessun risultato trovato</div>:
       newsList.map((notizia, index) => (
@@ -47,6 +49,7 @@ export function Notizie() {
 
     
     </div>
+    </section>
 
   );
 }

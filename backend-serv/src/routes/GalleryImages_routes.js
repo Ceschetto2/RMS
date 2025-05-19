@@ -18,5 +18,6 @@ router.get("/", GalleryController.getImages);
 router.post("/", GalleryController.sendImages);
 //Possiamo anche specializzare la route per legarla a diverse funzioni o query. In questo caso questa routes fa la stessa cosa della prima
 router.get("/test", GalleryController.getImages);
+router.get("/latest",GalleryController.getlastimg);
 
 module.exports = router;

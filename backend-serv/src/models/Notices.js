@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             body:{
                 type: DataTypes.STRING(255),
-                allowNull:false,
+                allowNull:true,
             },
             uploaded_by:{
                 type:DataTypes.INTEGER,

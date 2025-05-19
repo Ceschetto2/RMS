@@ -19,6 +19,7 @@ export function ImgSlideShow({ img_array }) {
 
   function getPrvIndex() {
     return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;
+ //immagine precedente : => indiceprecedente = currentimgindex -1  if currentindex=0 ? img:array.lengt -1 : currentimg.index -1 ;
   }
   function getNextIndex() {
     return currentImgIndex === img_array.length - 1 ? 0 : currentImgIndex + 1;

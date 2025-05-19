@@ -1,4 +1,6 @@
 config/*
+./config/*
 src/config/config.json
 *.env
 *.env.*
+

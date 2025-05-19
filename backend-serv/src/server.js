@@ -31,10 +31,15 @@ const faqRouter = require("./routes/FAQ_routes");
 app.use("/Faq", faqRouter);
 const notizieRouter = require("./routes/Notizie_routes");
 app.use("/Notizie", notizieRouter);
-const regolamentoRouter = require("./routes/Regolamento_routes")
-app.use("/Regolamento", regolamentoRouter)
-const bandiRouter = require("./routes/Bandi_route")
-app.use("/Bandi", bandiRouter)
+const regolamentoRouter = require("./routes/Regolamento_routes");
+app.use("/Regolamento", regolamentoRouter);
+const bandiRouter = require("./routes/Bandi_route");
+app.use("/Bandi", bandiRouter);
+const authenticationRouter = require("./routes/Authentication_route");
+app.use('/Authentication', authenticationRouter);
+//this route must be authorized
+const userRouter = require("./routes/Users_route");
+app.use('/User', userRouter);
 
 
 db.sequelize.sync().then(() => {

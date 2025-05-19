@@ -1,0 +1,36 @@
+.background-overlay{
+    position: fixed;
+    width: inherit;
+    height: 100vh;
+    background-color: rgba(87, 87, 87, 0.5); /* Colore di sfondo con opacità */
+    display: flex; /* Abilita il layout flex */
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.logout-popup {
+        top: 0;
+    left: 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    width: 300px;
+    text-align: center;
+}
+
+
+.dark-text{
+margin: 5px;
+color: black;
+height: fit-content;
+}
+
+.logout-popup-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}

@@ -55,3 +55,15 @@ exports.getImages = async (req, res) => {
     await GalleryImages.bulkCreate(imgs);
     res.json("Inserimento avvenuto con successo");
   }
+
+  exports.getlastimg = async(req,res)=>{
+    const imgs =req.body;
+
+    const results= await sequelize.query("SELECT  * from GalleryImages ORDER BY createdAt DESC LIMIT 1 ",{
+      model: GalleryImages,
+      mapToModel: true,
+
+    } );
+
+    res.json(results);
+  }

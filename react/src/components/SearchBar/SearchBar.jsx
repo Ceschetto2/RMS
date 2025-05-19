@@ -1,5 +1,7 @@
 import "./SearchBar.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDownWideShort, faArrowUpShortWide, faArrowUpWideShort, faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useState, useRef, useEffect } from "react";
 /* 
 Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un campo di input e un pulsante.
 - Accetta tre prop:
@@ -11,21 +13,83 @@ Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un ca
 - Lo stile del componente è gestito tramite il file CSS "SearchBar.css".
 */
 
-export function SearchBar({label, searchValue, setSearchValue}) {
+export function SearchBar({ label, searchData, setSearchData }) {
+
+  const setSearchValue = e => {
+    console.log(e)
+    setSearchData({
+      ...searchData,
+      [e.target.name]: e.target.value
+    });
+  }
+
+
+  // Stato per gestire l'apertura e la chiusura del popup di filtro
+  const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
+
+  // Funzione per gestire il click sul pulsante di filtro
+  const handleFilterClick = () => {
+    setIsFilterPopupOpen(!isFilterPopupOpen);
+  }
+
+
+  const outsideClickRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (outsideClickRef.current && !outsideClickRef.current.contains(event.target)) {
+      setIsFilterPopupOpen(false);
+    }
+  };
+
+  // Aggiunta e rimozione del listener
+  useEffect(() => {
+    // Aggiunge l'evento al montaggio
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Rimuove l'evento allo smontaggio
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
+
 
   return (
+
     <div className="search-container">
       <label className="label">{label}</label>
-      <input className="search-bar" name="search-query" value={searchValue}
-      onChange={(e) =>setSearchValue(e.target.value)}
+      <input className="search-bar" name="text" value={searchData.text} type="text" placeholder="Search..."
+        onChange={setSearchValue}
       />
-      
+
       <button className="search-button">
-        <img
-          className="search-icon"
-          src="https://i.postimg.cc/DZmHVpK3/search.png"
-        ></img>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
       </button>
+      <div ref={outsideClickRef}>
+        <button className="filter-button" onClick={handleFilterClick} >
+          <FontAwesomeIcon icon={faFilter} className="icon" />
+        </button>
+        {isFilterPopupOpen && (
+          <div className="filter-popup">
+            Ordine:
+            <div className="order-buttons">
+              {searchData.isOrdGrow ? "Crescente" : "Decrescente"}
+              <button className="order-button" name="isOrdGrow" onClick={() => setSearchData({ ...searchData, isOrdGrow: !searchData.isOrdGrow })}><FontAwesomeIcon icon={searchData.isOrdGrow ? faArrowUpWideShort : faArrowDownWideShort} /></button>
+            </div>Data di Caricamento:
+            <input value={searchData.date} name="date" type="date" onChange={setSearchValue} />
+            Regione:
+            <select>
+              <option value="toscana">Toscana</option>
+              <option value="lazio">Lazio</option>
+              <option value="liguria">Liguria</option>
+              <option value="emilia-romagna">Emilia Romagna</option>
+            </select>
+          </div>
+        )}
+      </div>
     </div>
+
   );
 }
+
