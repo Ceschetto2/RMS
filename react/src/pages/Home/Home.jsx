@@ -1,15 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { ContainerInfo } from "../../components/ContainerInfo/ContainerInfo";
-import { PageTitle } from "../../components/PageTitle/PageTitle";
-import { ImgGallery } from "../../components/ImgGallery/ImgGallery";
 import { ImgSlideShow } from "../../components/ImgSlideShow/ImgSlideShow";
 import { AdviseShow } from "../../components/AdviseContainer/AdviseContainer";
 import angle_top from "../../Assets/angle_top.png";
 import Intro from "../../Assets/Intro.webm";
 import enter from "../../Assets/enter.png";
 import "./Home.css";
-import { faUpLong } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -50,7 +45,6 @@ export function Home() {
       );
 
       setImgArray(response.data);
-      console.log(response.data);
     };
 
 
@@ -64,7 +58,6 @@ export function Home() {
       setnewsList(results.data)
     }
     fetchNotizie();
-    console.log(newsList)
   }, [])
 
   useEffect(() => {
@@ -73,7 +66,6 @@ export function Home() {
       setnoticesList(bandi.data);
     };
     fetchBandi();
-    console.log(noticesList)
   }, []);
   /*React Router non gestisce gli anchor link come HTML puro.
   Soluzioni: Scroll manuale con useLocation + useEffect

@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext, getToken } from "../../Hooks/Token/tokenState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Navbar.css";
 import { useEffect } from "react";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftRotate, faUser } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * Componente Navbar che visualizza la barra di navigazione principale dell'applicazione.
@@ -35,6 +35,9 @@ export function Navbar() {
 
   return (
     <div className="navbar">
+      <button className="go-back" onClick={() => navigate(-1)}>
+        <FontAwesomeIcon icon={faArrowLeftRotate} />
+      </button>
       <Link className="nav-link-image" to="/">
         <img
           className="nav-image"
@@ -42,6 +45,7 @@ export function Navbar() {
           alt="home"
         ></img>
       </Link>
+  
 
       <div className="nav-link-list">
         <Link className="nav-link" to="/gallery">

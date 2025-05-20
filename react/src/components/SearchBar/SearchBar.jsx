@@ -16,7 +16,6 @@ Il componente SearchBar rappresenta una barra di ricerca con un'etichetta, un ca
 export function SearchBar({ label, searchData, setSearchData }) {
 
   const setSearchValue = e => {
-    console.log(e)
     setSearchData({
       ...searchData,
       [e.target.name]: e.target.value
