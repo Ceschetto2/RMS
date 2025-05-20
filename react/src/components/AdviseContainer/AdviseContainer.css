@@ -25,7 +25,7 @@
   
   
   /* Stile per l’immagine */
-  .immagine-info {
+  .immagine-adv {
     width: 90%;
     border-radius:8px;
     margin-top: 4px;
@@ -36,7 +36,7 @@
   }
   
   
-  .immagine-info, .titolo-info {
+  .immagine-adv, .titolo-adv {
     margin: -10px; /* Elimina il margine */
     padding: 0px; /* Elimina il padding */
   }
@@ -44,7 +44,7 @@
   
   
   /* Titolo della notizia */
-  .titolo-info {
+  .titolo-adv {
     padding-top: 5px;
     color: black;
     font-size: 1.5rem;
@@ -52,20 +52,20 @@
   
   }
   
-  .titolo-info,.oggetto-info
+  .titolo-adv,.oggetto-adv
   { margin: -20px; /* Elimina il margine */
     padding: 0px; /* Elimina il padding */
     margin-top:0px;
   }
 
-  .oggetto-info{
+  .oggetto-adv{
     color: black;
     text-align: left;
     margin-bottom: 16px;
     font-size: 1.0rem;
   }
   
-  .oggetto-info,.descrizione-info{
+  .oggetto-adv,.descrizione-adv{
     margin: 15px;/* Elimina il margine */
     padding: 0px; /* Elimina il padding */
     margin-top:0px;
@@ -73,7 +73,7 @@
 
 
   /* Descrizione della notizia */
-  .descrizione-info {
+  .descrizione-adv {
     color: black;
     margin: 0% 0%;  
     font-size: 1rem; /* Dimensione di esempio */
