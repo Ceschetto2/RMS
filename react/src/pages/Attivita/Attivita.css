@@ -1,0 +1,9 @@
+.activity {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #0B0B22;
+    width: 80%;
+    margin: 16px;
+    border-radius: 16px;
+}

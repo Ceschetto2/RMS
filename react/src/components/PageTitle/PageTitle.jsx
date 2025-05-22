@@ -20,7 +20,7 @@ sia per il bottone di ricerca.
 
   return (
     <div className="container-page-title">
-      <text className="titolo">{title}</text>
+      <h1 className="titolo">{title}</h1>
       <SearchBar searchLabel= {searchLabel} searchData = {searchData} setSearchData={setSearchData} />
     </div>
   );
