@@ -4,6 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import "./Attivita.css"
 import { useState } from 'react'
 
+
 export function Attivita() {
     const [EventList, setEventList] = useState([
         { title: 'Allenamento', date: '2025-05-22' },
