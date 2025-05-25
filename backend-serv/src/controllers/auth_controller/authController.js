@@ -11,7 +11,7 @@ exports.login = async (req, res) => {
     //console.log(user);
     if (user !== null) {
       if (await bcrypt.compare(req.body.password, user.password)) {
-        console.log(user.dataValues);
+        //console.log(user.dataValues);
         const token = jwt.sign(user.dataValues, "chiave_segretissima", {
           expiresIn: "1h",
         });
@@ -44,13 +44,13 @@ exports.login = async (req, res) => {
 exports.tokenValidation = (req, res, next) => {
   //console.log(req.headers);
   const token = req.headers["authorization"];
-  console.log(token);
+  //console.log(token);
   if (token === null) return res.status(401).json("Token non valido");
   jwt.verify(token, "chiave_segretissima", (err, user) => {
     if (err)
       return res
         .status(403)
-        .json("Richiesta rifiutata, permessi non sufficenti\n" + err);
+        .json("Richiesta rifiutata, permessi non sufficenti " + err);
     req.user = user;
     next();
   });

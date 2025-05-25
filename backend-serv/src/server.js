@@ -18,7 +18,7 @@ app.use(express.json());
 
 const cors = require("cors");
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", "https://http://localhost:5174"],
 };
 
 app.use(cors(corsOptions));
@@ -40,6 +40,10 @@ app.use('/Authentication', authenticationRouter);
 //this route must be authorized
 const userRouter = require("./routes/Users_route");
 app.use('/User', userRouter);
+const wheatherRouter = require("./routes/Weather_route");
+app.use('/Weather', wheatherRouter);
+const eventsRouter = require("./routes/Events_route");
+app.use('/Events', eventsRouter);
 
 
 db.sequelize.sync().then(() => {

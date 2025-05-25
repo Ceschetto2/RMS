@@ -8,18 +8,24 @@ Il file Bandi_route.js definisce le roots per gestire le richieste relative ai b
 - Esporta il router per essere utilizzato nel server principale.
 */
 
-const express  = require("express")
+const express = require("express")
 const { Notices } = require("../models")
-const router  = express.Router()
+const router = express.Router()
 
-router.get("/", async(req,res)=>{
-    const response = await Notices.findAll();
-    res.json(response);
+router.get("/", async (req, res) => {
+  const response = await Notices.findAll();
+  res.json(response);
 })
 
-router.post("/", async(req,res)=>{
-    await Notices.bulkCreate(req.body);
-    res.json("Inserimento avvenuto con successo");
+router.post("/", async (req, res) => {
+
+  await Notices.bulkCreate(req.body);
+  res.json({
+    "messaggio": "Inserimento avvenuto con successo",
+    "status": 200,
+    "requestedData": JSON.stringify(req.headers),
+
+  });
 })
 
 module.exports = router;

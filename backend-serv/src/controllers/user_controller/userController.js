@@ -42,8 +42,7 @@ exports.addNewUser = async (req, res) => {
     userData.password = hash;
     await Users.create(userData);
   } catch (err) {
-    console.log(err);
-    return res.json("Utente non inserito");
+    return res.json("Errore durante l'inserimento dell'utente "+err);
   }
 
   const info = transporter.sendMail({

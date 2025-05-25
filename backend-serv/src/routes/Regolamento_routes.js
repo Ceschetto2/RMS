@@ -9,19 +9,14 @@ Il file Regolamento_routes.js definisce le roots per gestire le richieste relati
 */
 
 const express = require("express");
-const {InternalRegulations} = require("../models");
+const  RegolamentoController  = require("../controllers/regolamento_controller/regolamento_controller");
 
 const router = express.Router();
 
-router.get("/", async(req,res) => {
-    const response = await InternalRegulations.findAll()
-    res.json(response);
-})
+router.get("/", RegolamentoController.getRegulations);
+router.post("/", RegolamentoController.sendRegulations);
 
 
-router.post("/", async(req,res) => {
-    const rules = req.body
-    await InternalRegulations.bulkCreate(rules)
-    res.json("Inserimento avvenuto con successo")
-})
+
+router.post("/", )
 module.exports = router;

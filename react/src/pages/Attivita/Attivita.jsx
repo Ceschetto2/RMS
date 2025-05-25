@@ -2,16 +2,14 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import "./Attivita.css"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 export function Attivita() {
-    const [EventList, setEventList] = useState([
-        { title: 'Allenamento', date: '2025-05-22' },
-        { title: 'Lezione di danza', date: '2025-05-23' },
-        { title: 'Gita fuori porta', start: '2025-05-25', end: '2025-05-27', allDay: true },
-    ])
-
+    const [EventList, setEventList] = useState([])
+    useEffect(() => {
+        //const response = axios.get('http://localhost:8080/attivita')
+    }, [])
     const dateClick = () => {
         setEventList([
             ...EventList,
