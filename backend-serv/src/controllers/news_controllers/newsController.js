@@ -54,3 +54,11 @@ exports.sendNews = async(req,res) =>{
     res.json("Inserimento avvenuto con successo")
 
 }
+exports.getlastnews = async(req,res)=>{
+    const notiz = req.body;
+     const results= await sequelize.query("SELECT * FROM News ORDER BY createdAt DESC LIMIT 3",{
+        model: News,
+        mapToModel: true,
+     });
+    res.json(results);
+}

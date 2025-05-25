@@ -16,5 +16,5 @@ const router = express.Router();
 
 router.get("/", newsController.getNews)
 router.post("/", newsController.sendNews)
-
+router.get("/lastest", newsController.getlastnews);
 module.exports = router;
