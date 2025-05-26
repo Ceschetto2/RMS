@@ -2,12 +2,13 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import "./Attivita.css"
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
-
+import { eventsDataContext } from '../../Hooks/Events/EventProvider';
 
 export function Attivita() {
-    const [EventList, setEventList] = useState([])
+    const {eventsData, setEventsData, isEventPopupOpen, setIsEventPopupOpen} = useContext(eventsDataContext);
+
     useEffect(() => {
         const fetchEvents = async () => {
             try {
@@ -21,7 +22,7 @@ export function Attivita() {
                 console.log(response);
                 
                 
-                setEventList(response.data.map(event => ({
+                setEventsData(response.data.map(event => ({
                     title: event.title,
                     date: event.start_date,
                     allDay: event.all_day,
@@ -36,10 +37,7 @@ export function Attivita() {
 
     }, [])
     const dateClick = () => {
-        setEventList([
-            ...EventList,
-            { title: 'Nuova Attività', date: '2025-05-13' }
-        ])
+        setIsEventPopupOpen(true);
     }
 
     return (
@@ -62,7 +60,7 @@ export function Attivita() {
                 initialDate={new Date()}
                 selectable={true}
                 select={(info) => {alert(`Hai selezionato: ${info.start}`)}}
-                events={EventList}
+                events={eventsData}
                 eventClick={(info) => alert(`Hai cliccato su: ${info.event.title}`)}
                 eventMouseEnter={(info => {
                     info.el.style.backgroundColor = 'lightblue'

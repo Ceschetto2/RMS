@@ -24,6 +24,7 @@ import { Attivita } from "./pages/Attivita/Attivita";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import {EventProvider} from "./Hooks/Events/EventProvider";
 
 library.add(fas)
 
@@ -61,7 +62,7 @@ function App() {
     <AuthStatus>
       <Router>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<EventProvider><Layout /></EventProvider>}>
             <Route path="/" element={<Home />} />
             <Route path="/notizie" element={<Notizie />} />
             <Route path="/bandi" element={<Bandi />} />
