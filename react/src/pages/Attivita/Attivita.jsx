@@ -3,12 +3,37 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import "./Attivita.css"
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 
 export function Attivita() {
     const [EventList, setEventList] = useState([])
     useEffect(() => {
-        //const response = axios.get('http://localhost:8080/attivita')
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/Events/allEvents',
+                    {
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('token')}`,
+                        }
+                    }
+                );
+                console.log(response);
+                
+                
+                setEventList(response.data.map(event => ({
+                    title: event.title,
+                    date: event.start_date,
+                    allDay: event.all_day,
+                    id: event.event_id,
+                    description: event.description,
+                })));
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        }
+        fetchEvents();
+
     }, [])
     const dateClick = () => {
         setEventList([
@@ -31,11 +56,12 @@ export function Attivita() {
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,dayGridDay'
                 }}
+
                 height="auto"
                 aspectRatio={1.8}
                 initialDate={new Date()}
                 selectable={true}
-                select={(info) => alert(`Hai selezionato: ${info.startStr} - ${info.endStr}`)}
+                select={(info) => {alert(`Hai selezionato: ${info.start}`)}}
                 events={EventList}
                 eventClick={(info) => alert(`Hai cliccato su: ${info.event.title}`)}
                 eventMouseEnter={(info => {
@@ -47,6 +73,10 @@ export function Attivita() {
                     info.el.style.backgroundColor = ''
                 }
                 )}
+                dateClick={(info) => {
+                    const calendarApi = info.view.calendar;
+                    calendarApi.changeView('dayGridDay', info.dateStr);
+                }}
 
                 locale="it"
                 buttonText={{
