@@ -6,7 +6,7 @@ export function LogoutConfirmation({ onConfirm, onCancel }) {
         <div className="background-overlay">
 
             <div className="logout-popup">
-                <h2 className="dark-text" style={{ color: "#000" }}>Logout</h2>
+                <h2 className="dark-text">Logout</h2>
                 <p  className="dark-text" >Sei Sicur@ di voler effettuare il logout?</p>
                 <div className="logout-popup-buttons">
                     <button
