@@ -16,8 +16,7 @@ Il file Notices.js definisce il modello Notices per interagire con la tabella "N
 */
 
 module.exports = (sequelize, DataTypes) => {
-    const Notices = sequelize.define(
-        "Notices",
+    const Notices = sequelize.define( "Notices",
         {
             notice_id: {
                 type: DataTypes.INTEGER(11),

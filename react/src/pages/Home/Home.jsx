@@ -53,7 +53,7 @@ export function Home() {
 
   useEffect(()=>{
     const fetchNotizie = async() =>{
-      const results = await axios.get("http://localhost:8080/Notizie")
+      const results = await axios.get("http://localhost:8080/Notizie/lastest")
       
       setnewsList(results.data)
     }
@@ -62,7 +62,7 @@ export function Home() {
 
   useEffect(() => {
     const fetchBandi = async () => {
-      const bandi = await axios.get("http://localhost:8080/Bandi");
+      const bandi = await axios.get("http://localhost:8080/Bandi/latest");
       setnoticesList(bandi.data);
     };
     fetchBandi();

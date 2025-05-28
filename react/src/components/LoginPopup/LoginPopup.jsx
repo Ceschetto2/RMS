@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import "./LoginPopup.css";
 import axios from "axios";
-import {authContext, setToken } from "../../Hooks/Token/tokenState";
+import { authContext, setToken } from "../../Hooks/Token/tokenState";
 import { useNavigate } from "react-router-dom";
+import close from "../../Assets/close.png";
+/* 
+
 /* 
 Il componente LoginPopup rappresenta un popup per il login degli utenti.
 - Accetta una prop:
@@ -12,22 +15,26 @@ Il componente LoginPopup rappresenta un popup per il login degli utenti.
 */
 
 export function LoginPopup() {
-  const [user, setUser] = useState({username: "", passwd:""});
-    //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
-    let navigate = useNavigate(); 
+  const [user, setUser] = useState({ username: "", passwd: "" });
+  //inizializzazione dell'hook useNavigate usato per indirizzare l'utente verso altre pagine dopo qualche azione
+  let navigate = useNavigate();
 
-  const setUserCredential = e => {
+  const setUserCredential = (e) => {
     setUser({
       ...user,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-  
-
 
   const [loginLabel, setLoginLabel] = useState("");
-  const {authStatus,  setAuthStatus, loginPopupState, handleLoginPopupButtonClick, logoutPopupState, handleLogoutPopupButtonClick} = useContext(authContext)
-
+  const {
+    authStatus,
+    setAuthStatus,
+    loginPopupState,
+    handleLoginPopupButtonClick,
+    logoutPopupState,
+    handleLogoutPopupButtonClick,
+  } = useContext(authContext);
 
   //Questo hook ha l'effetto di chiudere il popup di login quando l'autenticazione va a buon fine.
   useEffect(() => {
@@ -38,17 +45,20 @@ export function LoginPopup() {
     <div className="popup-background">
       <div className="login-background">
         <div className="head-bar">
-          <text className="dark-text">Login e Divertiti</text>
-          <button onClick={handleLoginPopupButtonClick}> X </button>
+          <button className="Close-popup" onClick={handleLoginPopupButtonClick}>
+            <img className="closeimg" src={close} />{" "}
+          </button>
         </div>
-        <label className="dark-text">Username:</label>
+                <div className="loguser"><label className="dark-text">Username:</label></div>
         <input
           className="input-bar"
           name="username"
           value={user.username}
           onChange={setUserCredential}
         />
-        <label className="dark-text">Password:</label>
+        <div className="loguser">
+          <label className="dark-text">Password:</label>
+        </div>
         <input
           className="input-bar"
           name="passwd"
@@ -83,13 +93,12 @@ async function userAuthentication(
       setToken(
         await axios.post("http://localhost:8080/Authentication/login", {
           username: user.username,
-          password: user.passwd
+          password: user.passwd,
         })
       );
       setLoginLabel("Credenziali corrette, benvenuto campione");
       setAuthStatus(true);
       navigate("/dashboard");
-   
     } catch (err) {
       console.log("Errore: " + err);
       setLoginLabel("Credenziali Errate");
