@@ -59,7 +59,7 @@ export function Attivita() {
                 aspectRatio={1.8}
                 initialDate={new Date()}
                 selectable={true}
-                select={(info) => {alert(`Hai selezionato: ${info.start}`)}}
+                select={(info) => {console.log(info)}}
                 events={eventsData}
                 eventClick={(info) => alert(`Hai cliccato su: ${info.event.title}`)}
                 eventMouseEnter={(info => {
