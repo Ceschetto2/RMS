@@ -19,16 +19,10 @@ export function Attivita() {
                         }
                     }
                 );
-                console.log(response);
+                setEventsData(response.data)
                 
                 
-                setEventsData(response.data.map(event => ({
-                    title: event.title,
-                    date: event.start_date,
-                    allDay: event.all_day,
-                    id: event.event_id,
-                    description: event.description,
-                })));
+
             } catch (error) {
                 console.error('Error fetching events:', error);
             }
@@ -59,9 +53,9 @@ export function Attivita() {
                 aspectRatio={1.8}
                 initialDate={new Date()}
                 selectable={true}
-                select={(info) => {console.log(info)}}
+                select={(info) => alert("Hai Selezionato:", info, "-", info ) }
                 events={eventsData}
-                eventClick={(info) => alert(`Hai cliccato su: ${info.event.title}`)}
+                eventClick={(info) => console.log(info.event.startStr)}
                 eventMouseEnter={(info => {
                     info.el.style.backgroundColor = 'lightblue'
                     info.el.style.cursor = 'pointer'

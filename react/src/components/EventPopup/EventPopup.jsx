@@ -1,15 +1,17 @@
 import "./EventPopup.css";
-import { useContext, useEffect, useState } from 'react';
+import { act, useContext, useEffect, useState } from 'react';
 
 
 import { eventsDataContext } from '../../Hooks/Events/EventProvider';
 export function EventPopup({ startStr, endStr }) {
 
-    console.log(startStr + endStr)
     const { eventsData, setEventsData, setIsEventPopupOpen } = useContext(eventsDataContext);
+    const actualDate = new Date().toISOString().split('T')
+    const today = actualDate[0]
+    const timeNow = actualDate[1].split('Z')[0]
 
-    const today = new Date().toISOString().split('T')[0]
-    const [dateStr, setDateStr] = useState({ startDate: startStr ? startStr : today, startTime: "", endDate: endStr ? endStr : today, endTime: "" })
+    const [dateStr, setDateStr] = useState({ startDate: startStr ? startStr : today, startTime: timeNow, endDate: endStr ? endStr : today, endTime: timeNow })
+
     const setDate = (e) => (
         setDateStr({
             ...dateStr,
@@ -18,13 +20,14 @@ export function EventPopup({ startStr, endStr }) {
     )
 
     const [event, setEvent] = useState({
-        isAllDay: false,
+        allDay: false,
         location: "",
         eventType: "Gara",
-        startDate: null,
-        endDate: null,
+        start: new Date(),
+        end: new Date(),
         boatType: "",
         costalType: "",
+        description: ""
     })
     const setEventDataText = (e) => {
         setEvent({
@@ -40,27 +43,48 @@ export function EventPopup({ startStr, endStr }) {
     }
 
 
-    const showEvent = () => {
-        console.log(event)
-    }
+
 
     useEffect(() => {
-        if (event.boatType !== "Costal"){
+        if (event.boatType !== "Costal") {
             setEvent({
                 ...event,
-                costalType : ""
-            })}
+                costalType: ""
+            })
+        }
     }, [event.boatType])
 
-    /* Nota su type="date":
+    useEffect(() => {
+        setEvent({
+            ...event,
 
-    Il valore sarà sempre una stringa nel formato YYYY-MM-DD.
+            start: new Date(dateStr.startDate + "T" + dateStr.startTime),
+            end: new Date(dateStr.endDate + "T" + dateStr.endTime)
+        })
 
-    Anche se onChange funziona, non otterrai un oggetto Date — se ti serve, devi convertirlo manualmente:*/
+    }, [dateStr])
+
+    useEffect(() => {
+        setDateStr({
+            ...dateStr,
+            endDate: event.allDay ? "" : today
+        })
+
+
+
+    }, [event.allDay])
+
+    const showEvent = () => {
+        setEventsData([
+
+            ...eventsData,
+            event
+        ])
+    }
 
     const eventTypes = ["Gara", "Allenamento"]
-    const boatTypes = ["Gozzo Nazionale", "Jole Lariana", "Bilancella", "Costal", "Veneta", "Bisse", "Galeone", "VIP750"]
-    const costalTypes = ["C1X", "C2X", "C2X+", "C4X", "C4X+", "C8X+"]
+    const boatTypes = ["", "Gozzo Nazionale", "Jole Lariana", "Bilancella", "Costal", "Veneta", "Bisse", "Galeone", "VIP750"]
+    const costalTypes = ["", "C1X", "C2X", "C2X+", "C4X", "C4X+", "C8X+"]
     return (
         <div className="popup-background">
             <div className='popup-container'>
@@ -68,27 +92,29 @@ export function EventPopup({ startStr, endStr }) {
                     <label className='dark-text' > Inserisci Nuovi Eventi </label>
                     <button onClick={() => setIsEventPopupOpen(false)}> chiudi </button>
                 </div>
-                <h2 className="dark-text"> Seleziona Date </h2>
+                <label className="dark-text"> Titolo Evento:
+                    <input type="text" name="title" placeholder="allenamento/gara" onChange={setEventDataText} />
+                </label>
 
                 <div className="data-container">
 
 
                     <label className="dark-text"> Tutto il giorno
 
-                        <input type="checkbox" className="checkbox" name="isAllDay" checked={event.isAllDay} onChange={setEventDataBool} />
+                        <input type="checkbox" className="checkbox" name="allDay" checked={event.allDay} onChange={setEventDataBool} />
                     </label>
 
                     <div className="time-date-container">
 
                         <label className="dark-text"> Inizio:
                             <input name="startDate" type="date" defaultValue={dateStr.startDate} onChange={setDate} />
-                            <input name="startTime" type="time" onChange={setDate} />
+                            <input name="startTime" type="time" value={dateStr.startTime} onChange={setDate} />
                         </label>
 
 
                         <label className="dark-text"> Fine:
-                            {<input name="endDate" type="date" disabled={event.isAllDay} defaultValue={dateStr.endDate} onChange={setDate} />}
-                            <input name="endTime" type="time" onChange={setDate} />
+                            {<input name="endDate" type="date" value={dateStr.endDate} disabled={event.allDay} onChange={setDate} />}
+                            <input name="endTime" type="time" value={dateStr.endTime} onChange={setDate} />
                         </label>
 
 
@@ -136,7 +162,20 @@ export function EventPopup({ startStr, endStr }) {
                     </label>
 
 
+
+
+
                 </div>
+                <label className="dark-text"> Descrizione Evento:
+                    <textarea
+                        name="description"
+                        id="note"
+                        rows="4"
+                        cols="50"
+                        value={event.description}
+                        onChange={setEventDataText}
+                    />
+                </label>
                 <button onClick={showEvent} />
             </div>
 
