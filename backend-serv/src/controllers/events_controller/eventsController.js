@@ -4,7 +4,7 @@ const {Events} = require('../../models');
 exports.getAllEvents =  async (req, res) => {
     try {
         const events = await Events.findAll({
-            order: [['start_date', 'ASC']]
+            order: [['start', 'ASC']]
         });
 
         res.json(events);
@@ -15,16 +15,10 @@ exports.getAllEvents =  async (req, res) => {
 
 exports.addSingleEvent =  async (req, res) => {
     try {
-        let { title, description, start_date, end_date, all_day, location, createdBy } = req.body;
 
         const newEvent = await Events.create({
-            title,
-            description,
-            start_date,
-            end_date,
-            all_day,
-            location,
-            createdBy
+            ...req.body,
+            createdBy:req.user.user_id
         });
 
         res.status(201).json(newEvent);
@@ -38,7 +32,7 @@ exports.addMultipleEvents =  async (req, res) => {
     try {
         const eventsData = req.body.events.map(event => ({
             ...event,
-            createdBy: req.user.id
+            createdBy: req.user.user_id
         }));
         const createdEvents = await Events.bulkCreate(eventsData);
 

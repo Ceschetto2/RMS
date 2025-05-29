@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes)=> {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        start_date: {
-            type: DataTypes.STRING(255),
+        start: {
+            type: DataTypes.DATE,
             allowNull: false
         },
-        end_date: {
-            type: DataTypes.STRING(255),
+        end: {
+            type: DataTypes.DATE,
             allowNull: true
         },
-        all_day: {
+        allDay: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
             defaultValue: false
